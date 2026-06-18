@@ -6,7 +6,14 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function LoadingScreen() {
   const { active, progress, total, loaded } = useProgress();
-  const [show, setShow] = useState(true);
+  
+  const [show, setShow] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem('suminagashi_loaded');
+    }
+    return true;
+  });
+
   const [displayValue, setDisplayValue] = useState(0);
 
   const targetProgress = (!active && total === 0) ? 100 : progress;
@@ -46,6 +53,9 @@ export default function LoadingScreen() {
     if (displayValue >= 99.9) {
       const timer = setTimeout(() => {
         setShow(false);
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('suminagashi_loaded', 'true');
+        }
       }, 500); 
       return () => clearTimeout(timer);
     }
