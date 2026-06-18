@@ -20,10 +20,10 @@ export default function Contact() {
       </div>
 
       {/* Center Section: Massive Interaction Node */}
-      <div className="w-full flex-grow flex flex-col justify-center items-center pointer-events-auto z-10 mix-blend-difference animate-fade-in mt-16 md:mt-0">
+      <div className="w-full flex-grow flex flex-col justify-center items-center pointer-events-auto z-10 mix-blend-difference animate-fade-in">
         <a 
           href="mailto:3127.lakkshyajha@gmail.com" 
-          className="group relative flex flex-col items-center"
+          className="group relative flex flex-col items-center mt-12 md:mt-32"
         >
           {/* Subtle top indicator */}
           <span className="font-sans text-[10px] tracking-widest text-[#ffe4e6] font-bold uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_0_5px_rgba(255,228,230,0.5)] absolute -top-8">
