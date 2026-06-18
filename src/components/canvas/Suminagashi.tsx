@@ -238,8 +238,8 @@ void main() {
   float slope = cos(t + noiseVal * 4.0); 
   float shadow = pow(max(0.0, -slope * 0.8 + 0.2), 3.0);
   
-  // Apply the shadow by blending the base color towards pure black in the valleys
-  vec3 finalColor = mix(baseColor, vec3(0.02), shadow * 0.75);
+  // Apply the shadow by blending the base color towards pure black in the valleys (softened)
+  vec3 finalColor = mix(baseColor, vec3(0.02), shadow * 0.35);
   
   // Fun Interaction: Tactile water displacement
   float mouseDist = length(p - mouseAspect);
@@ -288,8 +288,8 @@ const routeConfigs: Record<string, { c1: string, c2: string, c3: string, c4: str
   "/": { c1: "#e2e8f0", c2: "#1e3a8a", c3: "#4c1d95", c4: "#ffffff", line: "#0f172a", behavior: 0.0 }, 
   // Work (Alchemy Forge): Ancient gold, dark crimson, charcoal, ember orange
   "/work": { c1: "#b45309", c2: "#7f1d1d", c3: "#1c1917", c4: "#f59e0b", line: "#450a0a", behavior: 1.0 }, 
-  // About (Ancient Library): Dark moss, deep emerald, dark pine, deep forest
-  "/about": { c1: "#0a120d", c2: "#064e3b", c3: "#03291c", c4: "#02170f", line: "#011f14", behavior: 2.0 },
+  // About (Ancient Library): Rich moss, deep emerald, forest green, dark pine
+  "/about": { c1: "#162e20", c2: "#064e3b", c3: "#0a3a29", c4: "#06291a", line: "#022416", behavior: 2.0 },
   // Contact (Astral Prophecy): Starry cyan, deep space black, pale moon yellow, amethyst
   "/contact": { c1: "#67e8f9", c2: "#020617", c3: "#fef08a", c4: "#86198f", line: "#000000", behavior: 3.0 }, 
   // Individual Project Pages (Cyber Matrix): Obsidian, bright cyan, neon pink, deep purple
