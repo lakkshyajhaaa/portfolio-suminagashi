@@ -20,7 +20,7 @@ export default function Contact() {
       </div>
 
       {/* Center Section: Massive Interaction Node */}
-      <div className="absolute top-[55%] md:top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-6 flex flex-col justify-center items-center pointer-events-auto z-10 mix-blend-difference animate-fade-in">
+      <div className="w-full flex-grow flex flex-col justify-center items-center pointer-events-auto z-10 mix-blend-difference animate-fade-in mt-16 md:mt-0">
         <a 
           href="mailto:3127.lakkshyajha@gmail.com" 
           className="group relative flex flex-col items-center"
