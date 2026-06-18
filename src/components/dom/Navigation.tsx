@@ -118,7 +118,7 @@ export default function Navigation() {
       </div>
 
       {/* Top Left Logo Mark (LJ Monogram) */}
-      <div className="fixed top-8 left-6 md:left-10 z-50 mix-blend-difference pointer-events-none">
+      <div className="absolute md:fixed top-8 left-6 md:left-10 z-50 mix-blend-difference pointer-events-none">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" className="opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">
           {/* L */}
           <path d="M2 2 H6 V14 H14 V18 H2 Z" />
@@ -128,7 +128,7 @@ export default function Navigation() {
       </div>
       
       {/* Copyright */}
-      <div className="fixed top-8 right-6 md:bottom-8 md:right-16 md:top-auto md:left-auto z-50 mix-blend-difference pointer-events-none font-sans text-[8px] md:text-[10px] tracking-widest text-white/30 text-right">
+      <div className="absolute md:fixed top-8 right-6 md:bottom-8 md:right-16 md:top-auto md:left-auto z-50 mix-blend-difference pointer-events-none font-sans text-[8px] md:text-[10px] tracking-widest text-white/30 text-right">
         ©LAKKSHYA<br className="md:hidden"/> JHA
       </div>
     </>
