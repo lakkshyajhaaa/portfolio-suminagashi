@@ -39,7 +39,7 @@ export default function Contact() {
         </a>
 
         {/* Secondary Social Links integrated below the primary action */}
-        <div className="flex flex-row gap-16 md:gap-32 mt-16 md:mt-24">
+        <div className="flex flex-row gap-16 md:gap-32 mt-8 md:mt-10">
           <a 
             href="https://github.com/lakkshyajhaaa" 
             target="_blank" 
