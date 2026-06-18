@@ -4,7 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import { Howl } from "howler";
 
 export function useSoundSystem(transitionState: string) {
-  const [isMuted, setIsMuted] = useState(true); // Muted by default
+  const [isMuted, setIsMuted] = useState(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("suminagashi_audio");
+      if (stored !== null) return stored === "true";
+    }
+    return true; // Muted by default
+  });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("suminagashi_audio", String(isMuted));
+    }
+  }, [isMuted]);
 
   const ambientTrack = useRef<Howl | null>(null);
 

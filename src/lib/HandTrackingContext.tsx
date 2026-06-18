@@ -32,7 +32,12 @@ const HandTrackingContext = createContext<HandTrackingContextType>({
 export const useHandTracking = () => useContext(HandTrackingContext);
 
 export const HandTrackingProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isCameraActive, setIsCameraActive] = useState(false);
+  const [isCameraActive, setIsCameraActive] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("suminagashi_camera") === "true";
+    }
+    return false;
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [isHandVisible, setIsHandVisible] = useState(false);
   const [isPinching, setIsPinching] = useState(false);
@@ -255,7 +260,11 @@ export const HandTrackingProvider = ({ children }: { children: React.ReactNode }
   };
 
   const toggleCamera = () => {
-    setIsCameraActive((prev) => !prev);
+    setIsCameraActive((prev) => {
+      const next = !prev;
+      if (typeof window !== "undefined") localStorage.setItem("suminagashi_camera", String(next));
+      return next;
+    });
   };
 
   // Lifecycle
