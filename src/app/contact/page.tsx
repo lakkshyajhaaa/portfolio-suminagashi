@@ -20,7 +20,7 @@ export default function Contact() {
       </div>
 
       {/* Center Section: Massive Interaction Node */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-6 flex justify-center items-center pointer-events-auto z-10 mix-blend-difference animate-fade-in">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-6 flex flex-col justify-center items-center pointer-events-auto z-10 mix-blend-difference animate-fade-in">
         <a 
           href="mailto:3127.lakkshyajha@gmail.com" 
           className="group relative flex flex-col items-center"
@@ -37,18 +37,38 @@ export default function Contact() {
           {/* Expanding underline */}
           <div className="w-0 h-[2px] bg-[#ffe4e6] group-hover:w-full transition-all duration-700 ease-out mt-2"></div>
         </a>
-      </div>
 
-      {/* Bottom Section: Technical Relays */}
-      <div className="flex flex-col md:flex-row gap-8 pointer-events-auto z-10 mix-blend-difference animate-fade-in mt-auto">
-        <div className="flex gap-8 border-t-[1px] border-white/20 pt-4">
-          <a href="https://github.com/lakkshyajhaaa" target="_blank" rel="noopener noreferrer" className="font-sans text-[10px] md:text-xs tracking-[0.2em] font-bold text-[#ffe4e6]/70 uppercase hover:text-[#ffe4e6] hover:drop-shadow-[0_0_8px_rgba(255,228,230,0.5)] transition-all">
-            GITHUB //
-          </a>
-          <a href="https://linkedin.com/in/lakkshyajha" target="_blank" rel="noopener noreferrer" className="font-sans text-[10px] md:text-xs tracking-[0.2em] font-bold text-[#ffe4e6]/70 uppercase hover:text-[#ffe4e6] hover:drop-shadow-[0_0_8px_rgba(255,228,230,0.5)] transition-all">
-            LINKEDIN //
+        {/* Secondary Social Links integrated below the primary action */}
+        <div className="flex flex-row gap-12 md:gap-24 mt-12 md:mt-16">
+          <a 
+            href="https://github.com/lakkshyajhaaa" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="group relative flex flex-col items-center"
+          >
+            <span className="font-sans text-[8px] md:text-[10px] tracking-widest text-[#ffe4e6]/50 font-bold uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 absolute -top-6">
+              VIEW REPOS ↘
+            </span>
+            <h3 className="font-sans text-[6vw] md:text-[4vw] tracking-tighter font-bold text-white/70 whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] group-hover:text-[#ffe4e6] group-hover:drop-shadow-[0_0_20px_rgba(255,228,230,0.5)] transition-all duration-500 scale-y-110 group-hover:scale-y-100 group-hover:scale-x-105">
+              GITHUB
+            </h3>
+            <div className="w-0 h-[1px] bg-[#ffe4e6]/70 group-hover:w-full transition-all duration-700 ease-out mt-1"></div>
           </a>
 
+          <a 
+            href="https://linkedin.com/in/lakkshyajha" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="group relative flex flex-col items-center"
+          >
+            <span className="font-sans text-[8px] md:text-[10px] tracking-widest text-[#ffe4e6]/50 font-bold uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 absolute -top-6">
+              PROFESSIONAL ↘
+            </span>
+            <h3 className="font-sans text-[6vw] md:text-[4vw] tracking-tighter font-bold text-white/70 whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] group-hover:text-[#ffe4e6] group-hover:drop-shadow-[0_0_20px_rgba(255,228,230,0.5)] transition-all duration-500 scale-y-110 group-hover:scale-y-100 group-hover:scale-x-105">
+              LINKEDIN
+            </h3>
+            <div className="w-0 h-[1px] bg-[#ffe4e6]/70 group-hover:w-full transition-all duration-700 ease-out mt-1"></div>
+          </a>
         </div>
       </div>
 
