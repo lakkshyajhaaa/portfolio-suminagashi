@@ -15,8 +15,14 @@ export default function Scene() {
   const { state } = useTransitionMachine();
   const pathname = usePathname();
 
-  // If we are on mobile, we can pass a flag
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none">
@@ -41,10 +47,10 @@ export default function Scene() {
           <directionalLight position={[-10, -10, -5]} intensity={1} color="#67e8f9" />
           
           {/* HDRI Environment map gives the dark side of the glass beautiful, smooth reflections and specs of color */}
-          <Environment preset="city" />
+          {!isMobile && <Environment preset="city" />}
           
           {/* The new Invisible Cinematic 3D Element */}
-          <RefractionLens />
+          {!isMobile && <RefractionLens />}
         </Suspense>
       </Canvas>
     </div>

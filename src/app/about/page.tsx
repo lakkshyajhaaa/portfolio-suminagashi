@@ -77,7 +77,7 @@ export default function About() {
       </div>
 
       {/* Narrative Sections */}
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-24 md:gap-y-32 pointer-events-auto z-10 animate-fade-in mt-32 md:mt-48 pb-32">
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-24 md:gap-y-32 pointer-events-auto z-10 animate-fade-in mt-32 md:mt-48 pb-48 md:pb-32">
         
         {/* Section 1 */}
         <div className="flex flex-col border-t-[1px] border-white/20 pt-6">

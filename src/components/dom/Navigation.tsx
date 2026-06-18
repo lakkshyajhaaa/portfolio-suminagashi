@@ -64,10 +64,9 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Brutalist Vertical Spine (Navigation) */}
+      {/* Brutalist Vertical Spine (Navigation on PC, Bottom Dock on Mobile) */}
       <nav 
-        className="fixed left-6 md:left-10 top-1/2 -translate-y-1/2 z-50 flex gap-12 md:gap-24 mix-blend-difference pointer-events-auto"
-        style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 flex-row w-full justify-center gap-6 md:left-10 md:top-1/2 md:-translate-y-1/2 md:-translate-x-0 md:bottom-auto md:flex-col md:w-auto md:gap-24 z-50 flex mix-blend-difference pointer-events-auto [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl] rotate-0 md:rotate-180"
       >
         {navItems.map((item) => {
           const isActive = pathname === item.href;
@@ -91,13 +90,13 @@ export default function Navigation() {
         })}
       </nav>
 
-      {/* Brutalist Grid HUD (Controls) */}
-      <div className={`fixed ${
+      {/* Brutalist Grid HUD (Controls) - Hidden on Mobile */}
+      <div className={`hidden md:flex fixed ${
         pathname === "/" ? "top-8 right-8" :
         pathname === "/work" ? "top-8 left-1/2 -translate-x-1/2" :
         pathname === "/about" ? "top-8 left-[40%] -translate-x-1/2" :
         "top-8 right-8" // contact or others
-      } z-50 flex flex-col font-sans text-[9px] md:text-[10px] tracking-[0.2em] text-white/50 mix-blend-difference pointer-events-auto border-[1px] border-white/20 uppercase bg-black/20 backdrop-blur-md transition-all duration-700`}>
+      } z-50 flex-col font-sans text-[9px] md:text-[10px] tracking-[0.2em] text-white/50 mix-blend-difference pointer-events-auto border-[1px] border-white/20 uppercase bg-black/20 backdrop-blur-md transition-all duration-700`}>
         <div className="flex border-b-[1px] border-white/20">
           <div className="p-3 md:p-4 border-r-[1px] border-white/20 w-24 md:w-32">controls</div>
           <div className="p-3 md:p-4 w-24 md:w-32 flex justify-end">opt</div>
@@ -129,8 +128,8 @@ export default function Navigation() {
       </div>
       
       {/* Copyright */}
-      <div className="fixed bottom-8 right-8 md:right-16 z-50 mix-blend-difference pointer-events-none font-sans text-[10px] tracking-widest text-white/30">
-        ©LAKKSHYA JHA
+      <div className="fixed top-8 right-6 md:bottom-8 md:right-16 md:top-auto md:left-auto z-50 mix-blend-difference pointer-events-none font-sans text-[8px] md:text-[10px] tracking-widest text-white/30 text-right">
+        ©LAKKSHYA<br className="md:hidden"/> JHA
       </div>
     </>
   );
