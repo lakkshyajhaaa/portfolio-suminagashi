@@ -233,8 +233,13 @@ void main() {
   vec3 colorB = mix(uColor3, uColor4, smoothstep(-1.0, 1.0, inkBands));
   vec3 baseColor = mix(colorA, colorB, noiseVal);
   
-  // Base color is matte (specular shine removed globally)
-  vec3 finalColor = baseColor;
+  // Create deep, moody shadows to compensate for the lost bright specular zones
+  // We calculate the slope of the physical waves to find the "valleys"
+  float slope = cos(t + noiseVal * 4.0); 
+  float shadow = pow(max(0.0, -slope * 0.8 + 0.2), 3.0);
+  
+  // Apply the shadow by blending the base color towards pure black in the valleys
+  vec3 finalColor = mix(baseColor, vec3(0.02), shadow * 0.75);
   
   // Fun Interaction: Tactile water displacement
   float mouseDist = length(p - mouseAspect);
