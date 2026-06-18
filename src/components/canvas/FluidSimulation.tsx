@@ -280,7 +280,7 @@ export default function FluidSimulation({ pathname }: { pathname: string }) {
         splat: THREE.ShaderMaterial;
         clear: THREE.ShaderMaterial;
         display: THREE.ShaderMaterial;
-    }>();
+    } | null>(null);
 
     const quad = useRef<THREE.Mesh>(null);
     const orthoCamera = useRef(new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1));
