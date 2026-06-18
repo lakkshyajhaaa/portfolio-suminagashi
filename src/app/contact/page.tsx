@@ -20,13 +20,13 @@ export default function Contact() {
       </div>
 
       {/* Center Section: Massive Interaction Node */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-6 flex flex-col justify-center items-center pointer-events-auto z-10 mix-blend-difference animate-fade-in">
+      <div className="absolute top-[55%] md:top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-6 flex flex-col justify-center items-center pointer-events-auto z-10 mix-blend-difference animate-fade-in">
         <a 
           href="mailto:3127.lakkshyajha@gmail.com" 
           className="group relative flex flex-col items-center"
         >
           {/* Subtle top indicator */}
-          <span className="font-sans text-[10px] tracking-widest text-[#ffe4e6] font-bold uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_0_5px_rgba(255,228,230,0.5)]">
+          <span className="font-sans text-[10px] tracking-widest text-[#ffe4e6] font-bold uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_0_5px_rgba(255,228,230,0.5)] absolute -top-8">
             SEND EMAIL ↘
           </span>
           
@@ -35,11 +35,11 @@ export default function Contact() {
           </h2>
           
           {/* Expanding underline */}
-          <div className="w-0 h-[2px] bg-[#ffe4e6] group-hover:w-full transition-all duration-700 ease-out mt-2"></div>
+          <div className="w-0 h-[2px] bg-[#ffe4e6] group-hover:w-full transition-all duration-700 ease-out mt-4 md:mt-6"></div>
         </a>
 
         {/* Secondary Social Links integrated below the primary action */}
-        <div className="flex flex-row gap-12 md:gap-24 mt-12 md:mt-16">
+        <div className="flex flex-row gap-16 md:gap-32 mt-16 md:mt-24">
           <a 
             href="https://github.com/lakkshyajhaaa" 
             target="_blank" 
