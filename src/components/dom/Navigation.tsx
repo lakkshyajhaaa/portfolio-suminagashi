@@ -66,7 +66,7 @@ export default function Navigation() {
     <>
       {/* Brutalist Vertical Spine (Navigation on PC, Bottom Dock on Mobile) */}
       <nav 
-        className="fixed bottom-6 left-1/2 -translate-x-1/2 flex-row w-full justify-center gap-6 md:left-10 md:top-1/2 md:-translate-y-1/2 md:-translate-x-0 md:bottom-auto md:flex-col md:w-auto md:gap-24 z-50 flex mix-blend-difference pointer-events-auto [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl] rotate-0 md:rotate-180"
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 flex-row w-full justify-center gap-6 md:left-10 md:top-1/2 md:-translate-y-1/2 md:-translate-x-0 md:bottom-auto md:w-auto md:gap-24 z-50 flex mix-blend-difference pointer-events-auto [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl] rotate-0 md:rotate-180"
       >
         {navItems.map((item) => {
           const isActive = pathname === item.href;
