@@ -10,7 +10,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-transparent">
       {/* Brutalist Monolithic Typography (Top Left) */}
       <div className="absolute top-[80px] left-6 md:top-24 md:left-32 flex flex-col pointer-events-auto z-10 mix-blend-difference animate-fade-in">
-        <h1 className="font-sans text-[15vw] md:text-[8rem] lg:text-[10rem] tracking-[-0.05em] font-bold text-white leading-[0.8] drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]">
+        <h1 className="font-sans text-[11vw] md:text-[8rem] lg:text-[10rem] tracking-[-0.05em] font-bold text-white leading-[0.8] drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]">
           LAKKSHYA
         </h1>
         <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase ml-2 mt-4 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
@@ -23,7 +23,7 @@ export default function Home() {
         <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mr-2 mb-4 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
           Status // Active
         </span>
-        <h1 className="font-sans text-[15vw] md:text-[8rem] lg:text-[10rem] tracking-[-0.05em] font-bold text-white leading-[0.8] drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]">
+        <h1 className="font-sans text-[14vw] md:text-[8rem] lg:text-[10rem] tracking-[-0.05em] font-bold text-white leading-[0.8] drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]">
           JHA.
         </h1>
       </div>

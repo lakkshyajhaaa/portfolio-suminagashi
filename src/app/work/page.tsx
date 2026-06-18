@@ -34,7 +34,7 @@ export default function Work() {
               <span className="font-sans text-[8px] md:text-[10px] tracking-widest text-[#ff5500] font-bold mb-1 md:mb-6 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
                 {project.id} // {project.type} // {project.status}
               </span>
-              <h2 className="font-sans text-[14vw] md:text-[6rem] lg:text-[7.5rem] tracking-[-0.05em] font-bold text-white/90 leading-[0.85] drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] group-hover:text-[#f3e8ff] group-hover:drop-shadow-[0_0_25px_rgba(243,232,255,0.6)] transition-all duration-300 whitespace-nowrap">
+              <h2 className="font-sans text-[8vw] sm:text-[10vw] md:text-[6rem] lg:text-[7.5rem] tracking-[-0.05em] font-bold text-white/90 leading-[0.85] drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] group-hover:text-[#f3e8ff] group-hover:drop-shadow-[0_0_25px_rgba(243,232,255,0.6)] transition-all duration-300 whitespace-nowrap">
                 {project.name}
               </h2>
             </div>
