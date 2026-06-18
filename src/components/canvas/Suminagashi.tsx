@@ -260,17 +260,7 @@ void main() {
   float vignette = smoothstep(0.95, 0.35, distToCenter);
   finalColor *= vignette;
   
-  // --- GRITTY FILM GRAIN & FROSTED GLASS (BRUTALIST CINEMATIC) ---
-  // High-frequency noise for 35mm film grain
-  float grain = fract(sin(dot(st.xy, vec2(12.9898, 78.233)) + time) * 43758.5453);
-  finalColor -= grain * 0.12; // Inject deep grit
-  
-  // Organic Frosted Glass Streaks (Curving like a river)
-  // High-frequency sine wave (25.0) ensures we see multiple bends across the screen height
-  float riverCurve = sin(st.y * 25.0 + time * 1.5) * 0.04 + (noiseVal * 0.05);
-  float rain = fbm(vec2((st.x + riverCurve) * 20.0, st.y * 2.0 - time * 0.5));
-  float streaks = smoothstep(0.4, 0.85, rain); // Lower threshold makes streaks brighter/thicker
-  finalColor += streaks * 0.25 * mix(vec3(1.0), uColor4, 0.4); // Brighter blend
+  // (Gritty film grain and frosted glass streaks removed for a smoother, premium aesthetic)
   
   vec3 color = finalColor;
   
