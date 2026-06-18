@@ -62,7 +62,7 @@ export default function Contact() {
             className="group relative flex flex-col items-center"
           >
             <span className="font-sans text-[8px] md:text-[10px] tracking-widest text-[#ffe4e6]/50 font-bold uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 absolute -top-6">
-              PROFESSIONAL ↘
+              CONNECT ↘
             </span>
             <h3 className="font-sans text-[6vw] md:text-[4vw] tracking-tighter font-bold text-white/70 whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] group-hover:text-[#ffe4e6] group-hover:drop-shadow-[0_0_20px_rgba(255,228,230,0.5)] transition-all duration-500 scale-y-110 group-hover:scale-y-100 group-hover:scale-x-105">
               LINKEDIN
