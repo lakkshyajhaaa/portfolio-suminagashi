@@ -42,7 +42,7 @@ export default function Contact() {
       {/* Bottom Section: Technical Relays */}
       <div className="flex flex-col md:flex-row gap-8 pointer-events-auto z-10 mix-blend-difference animate-fade-in mt-auto">
         <div className="flex gap-8 border-t-[1px] border-white/20 pt-4">
-          <a href="https://github.com/lakkshyajhaa" target="_blank" rel="noopener noreferrer" className="font-sans text-[10px] md:text-xs tracking-[0.2em] font-bold text-[#ffe4e6]/70 uppercase hover:text-[#ffe4e6] hover:drop-shadow-[0_0_8px_rgba(255,228,230,0.5)] transition-all">
+          <a href="https://github.com/lakkshyajhaaa" target="_blank" rel="noopener noreferrer" className="font-sans text-[10px] md:text-xs tracking-[0.2em] font-bold text-[#ffe4e6]/70 uppercase hover:text-[#ffe4e6] hover:drop-shadow-[0_0_8px_rgba(255,228,230,0.5)] transition-all">
             GITHUB //
           </a>
           <a href="https://linkedin.com/in/lakkshyajha" target="_blank" rel="noopener noreferrer" className="font-sans text-[10px] md:text-xs tracking-[0.2em] font-bold text-[#ffe4e6]/70 uppercase hover:text-[#ffe4e6] hover:drop-shadow-[0_0_8px_rgba(255,228,230,0.5)] transition-all">
