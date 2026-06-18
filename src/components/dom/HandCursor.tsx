@@ -215,30 +215,36 @@ export default function HandCursor() {
           {/* Beautiful SVG Golden Snitch */}
           <svg width="160" height="80" viewBox="0 0 160 80" style={{ overflow: "visible" }}>
             <defs>
-              <radialGradient id="goldSphere" cx="35%" cy="30%" r="60%">
+              {/* Premium Hyper-Realistic Gold Material */}
+              <radialGradient id="goldSphere" cx="30%" cy="30%" r="70%">
                 <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="20%" stopColor="#ffed4a" />
-                <stop offset="70%" stopColor="#e0b046" />
-                <stop offset="100%" stopColor="#966d1b" />
+                <stop offset="15%" stopColor="#fef08a" />
+                <stop offset="40%" stopColor="#d97706" />
+                <stop offset="75%" stopColor="#78350f" />
+                <stop offset="100%" stopColor="#451a03" />
               </radialGradient>
               
+              {/* Ethereal Frosted Glass Wings */}
               <linearGradient id="wingGradLeft" x1="100%" y1="100%" x2="0%" y2="0%">
-                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#ffed4a" stopOpacity="0.4" />
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+                <stop offset="45%" stopColor="#fef3c7" stopOpacity="0.6" />
                 <stop offset="100%" stopColor="#ffffff" stopOpacity="0.0" />
               </linearGradient>
 
               <linearGradient id="wingGradRight" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#ffed4a" stopOpacity="0.4" />
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+                <stop offset="45%" stopColor="#fef3c7" stopOpacity="0.6" />
                 <stop offset="100%" stopColor="#ffffff" stopOpacity="0.0" />
               </linearGradient>
 
+              {/* Cinematic Optical Bloom */}
               <filter id="snitchGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation={isPinching ? "6" : "4"} result="coloredBlur"/>
+                <feGaussianBlur in="SourceGraphic" stdDeviation={isPinching ? "8" : "5"} result="blur1" />
+                <feGaussianBlur in="SourceGraphic" stdDeviation={isPinching ? "3" : "1.5"} result="blur2" />
                 <feMerge>
-                  <feMergeNode in="coloredBlur"/>
-                  <feMergeNode in="SourceGraphic"/>
+                  <feMergeNode in="blur1" />
+                  <feMergeNode in="blur2" />
+                  <feMergeNode in="SourceGraphic" />
                 </feMerge>
               </filter>
             </defs>
@@ -274,10 +280,13 @@ export default function HandCursor() {
             {/* Golden Body */}
             <circle cx="80" cy="40" r={isPinching ? "10" : "14"} fill="url(#goldSphere)" filter="url(#snitchGlow)" />
             
-            {/* Intricate Body Swirls */}
-            <path d="M 70 35 Q 80 44 90 35" stroke="#7a550f" strokeWidth="1" fill="none" opacity="0.7" />
-            <path d="M 68 40 Q 80 48 92 40" stroke="#7a550f" strokeWidth="1.2" fill="none" opacity="0.7" />
-            <path d="M 72 45 Q 80 38 88 45" stroke="#7a550f" strokeWidth="0.8" fill="none" opacity="0.5" />
+            {/* Intricate Engraved Body Swirls */}
+            <path d="M 70 35 Q 80 44 90 35" stroke="#451a03" strokeWidth="1" fill="none" opacity="0.8" />
+            <path d="M 68 40 Q 80 48 92 40" stroke="#451a03" strokeWidth="1.2" fill="none" opacity="0.8" />
+            <path d="M 72 45 Q 80 38 88 45" stroke="#451a03" strokeWidth="0.8" fill="none" opacity="0.6" />
+            {/* Subtle Specular Highlights on the engravings for 3D embossed look */}
+            <path d="M 70 36 Q 80 45 90 36" stroke="#ffffff" strokeWidth="0.5" fill="none" opacity="0.4" />
+            <path d="M 68 41 Q 80 49 92 41" stroke="#ffffff" strokeWidth="0.5" fill="none" opacity="0.4" />
           </svg>
         </motion.div>
       )}
