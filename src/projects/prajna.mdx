@@ -1,0 +1,78 @@
+---
+id: "01"
+slug: "prajna"
+name: "PRAJÑA"
+type: "AI & SIMULATION"
+status: "ONLINE"
+role: "System Architect"
+techStack: ["React", "FastAPI", "Python"]
+---
+
+Zero-Knowledge, Hierarchical Biometric Inference Framework.
+
+[View Live Deployment](https://huggingface.co/spaces/lakkshyajhaaa/Prajna)
+
+## The Zero-Knowledge Evolution
+
+Prajna 0.2 has been completely re-architected into a Stateless, Zero-Knowledge System backed by a modern, ultra-premium React frontend.
+
+*"AI should not only make predictions. It should decide whether its predictions deserve to be trusted — and how much intelligence to spend before deciding, all while rigorously protecting user privacy."*
+
+The server no longer stores your face, your identity, or your biometric vectors. Instead, we have introduced the **Biometric Device Wallet**. When you enroll, your facial vectors are extracted mathematically, returned to your browser, and securely stored in your local `localStorage`.
+
+Every time you verify your identity, your browser temporarily transmits your biometric token alongside your photo. The server calculates the similarities, makes a routing decision, and immediately destroys all data from its memory.
+
+## Key Upgrades
+
+- **React + FastAPI Stack:** A blistering fast, glassmorphic UI built on Vite and React.
+- **Biometric Device Wallet:** Complete data sovereignty. You own your tokens.
+- **Dynamic Routing Explanations:** Beautiful, real-time AI reasoning logs that tell you exactly why a decision was made, with explicit matched identity tracking.
+- **Legal Safeguards:** Integrated experimental disclaimers, terms of service, and privacy policies.
+
+## Two-Stage Hierarchical Inference
+
+Prajna 0.2 extends the adaptive uncertainty-awareness of previous versions with a two-stage hierarchical inference pipeline driven by a routing score. 
+
+The key question the system answers at every query: *"Is Stage-1's confidence sufficient to decide, or should I spend Stage-2 compute?"*
+
+### Architecture Flow
+
+- **The Quality Gate:** The system first evaluates the composite quality (Q) of the image. If Q < 0.20, it executes a hard reject before wasting compute.
+- **Stage 1 (MobileFaceNet):** An ultra-lightweight, blazing-fast neural network generates an initial embedding and calculates a Routing Score (ρ).
+- **The Routing Engine:**
+  - If ρ ≥ ρ_accept, the system terminates immediately with an ACCEPT.
+  - If ρ ≤ ρ_reject, the system terminates immediately with a REJECT.
+  - If ρ falls in the escalation band, the system forwards the task to Stage 2.
+- **Stage 2 (InceptionResnetV1):** A heavy-duty, deep-scan neural network computes a highly detailed 512-dimensional embedding to resolve ambiguity, resulting in a final ACCEPT, REVIEW, or REJECT.
+
+## The Routing Formula
+
+```text
+ρ = R · φ(Q) · ψ(A)
+```
+
+- **R** = responsibility score (cosine similarity weighted by margin + certainty)
+- **φ(Q)** = Q^κ (quality attenuation, default κ=0.50)
+- **ψ(A)** = 1−λ·A (ambiguity attenuation, default λ=0.30)
+- **Q** = composite image quality score ∈ [0,1]
+- **A** = top-2/top-1 similarity ratio (identity ambiguity) ∈ [0,1]
+
+## Prajna 0.1 (Legacy)
+
+**FACIAL RECOGNITION & EXPLANATIONS**
+
+Pivoted to biometric security. Introduced robust facial recognition with mathematical responsibility scoring and an LLM-based explanation layer to make AI decisions transparent to humans.
+
+- `Face Embeddings`
+- `Mathematical Responsibility`
+- `LLM Explanations`
+
+## Prajna 0.0 (Deprecated)
+
+**DAY / NIGHT CLASSIFICATION**
+
+The foundational prototype. A basic computer vision model focused purely on environmental state classification (Day vs. Night). Set the groundwork for our visual processing pipelines.
+
+- `Basic CNN`
+- `Environmental Analysis`
+- `Prototype Build`
