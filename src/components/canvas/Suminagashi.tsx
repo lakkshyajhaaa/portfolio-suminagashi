@@ -228,36 +228,24 @@ void main() {
   // Create smooth undulating bands of ink
   float inkBands = sin(t + noiseVal * 4.0);
   
-  // --- CINEMATIC LIGHTING (Fake 3D Specular) ---
-  // To make it look like a premium physical liquid, we calculate the derivative of the rings.
-  // This gives us the "slope" or normal of the wave, allowing it to catch light!
-  float slope = cos(t + noiseVal * 4.0); 
-  
-  // Specular Highlight: When the slope faces the "light source", it shines brilliantly
-  float specular = pow(max(0.0, slope * 0.9 + 0.1), 12.0);
-  
   // Map colors smoothly to the Suminagashi bands (no harsh zebra lines!)
   vec3 colorA = mix(uColor1, uColor2, smoothstep(-1.0, 1.0, inkBands));
   vec3 colorB = mix(uColor3, uColor4, smoothstep(-1.0, 1.0, inkBands));
   vec3 baseColor = mix(colorA, colorB, noiseVal);
   
-  // Add the metallic shine (Warm golden/silver light reacting to the physical waves)
-  vec3 shineColor = mix(vec3(1.0, 0.9, 0.6), uColor4, 0.3);
-  if (abs(uBehavior - 2.0) < 0.1) {
-      // Dark, moody green specular for the About page to maintain text readability
-      shineColor = mix(vec3(0.05, 0.15, 0.05), uColor2, 0.4);
-  }
-  vec3 finalColor = baseColor + (shineColor * specular * 1.5);
+  // Base color is matte (specular shine removed globally)
+  vec3 finalColor = baseColor;
   
   // Fun Interaction: Tactile water displacement
   float mouseDist = length(p - mouseAspect);
   float mouseSplash = smoothstep(0.2, 0.0, mouseDist);
   
-  // The mouse creates a deep depression (shadow) with a bright rim (specular splash)
+  // The mouse creates a deep depression (shadow) with a bright rim
   // This makes the cursor feel like a physical stylus dragging through thick paint!
   finalColor -= mouseSplash * 0.4; 
   float rim = smoothstep(0.15, 0.1, mouseDist) * smoothstep(0.0, 0.05, mouseDist);
-  finalColor += shineColor * rim * 2.5;
+  vec3 rimColor = mix(vec3(1.0), uColor4, 0.3);
+  finalColor += rimColor * rim * 2.5;
   
   // Cinematic Vignette: Elegant fade to black at the edges
   // Make the boundary organic and slightly influenced by the fluid flow
