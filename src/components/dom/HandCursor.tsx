@@ -53,7 +53,7 @@ export default function HandCursor() {
       for (const el of clickables) {
          const rect = el.getBoundingClientRect();
          // We only care about elements actually visible on screen
-         if (rect.width === 0 || rect.height === 0 || rect.opacity === '0') continue;
+         if (rect.width === 0 || rect.height === 0) continue;
          
          const centerX = rect.left + rect.width / 2;
          const centerY = rect.top + rect.height / 2;

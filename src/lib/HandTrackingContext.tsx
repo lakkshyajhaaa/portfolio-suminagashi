@@ -23,6 +23,7 @@ const HandTrackingContext = createContext<HandTrackingContextType>({
   handPosition: null,
   getHandPosition: () => null,
   rawPosition: null,
+  getRawPosition: () => null,
   isLoading: false,
   videoElement: null,
   isPinching: false,

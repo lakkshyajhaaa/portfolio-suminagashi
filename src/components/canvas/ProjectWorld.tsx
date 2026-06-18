@@ -153,7 +153,7 @@ function Portal({ data, isHovered, setHovered }: { data: PortalData, isHovered: 
       {isHovered && (
         <line>
           <bufferGeometry attach="geometry">
-            <float32BufferAttribute attach="attributes-position" args={[new Float32Array([0, 0, 0, -ref.current?.position.x || 0, -ref.current?.position.y || 0, -ref.current?.position.z || 0]), 3]} />
+            <float32BufferAttribute attach="attributes-position" args={[new Float32Array([0, 0, 0, -(ref.current?.position.x ?? 0), -(ref.current?.position.y ?? 0), -(ref.current?.position.z ?? 0)]), 3]} />
           </bufferGeometry>
           <lineBasicMaterial attach="material" color={data.color} transparent opacity={0.5} />
         </line>
