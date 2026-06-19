@@ -255,7 +255,10 @@ void main() {
   vec3 rimColor = mix(vec3(1.0), uColor4, 0.3);
   finalColor += rimColor * rim * 2.5;
   
-  // Cinematic Vignette removed to keep edges bright and clear
+  // Clean Cinematic Vignette: Smooth radial fade to black without the cloudy noise
+  float distToCenter = distance(st, vec2(0.5) * aspect);
+  float vignette = smoothstep(1.0, 0.3, distToCenter);
+  finalColor = mix(finalColor, finalColor * vignette, 0.8);
   
   // Cinematic Film Grain
   float grain = fract(sin(dot(st, vec2(12.9898, 78.233)) + time) * 43758.5453);
