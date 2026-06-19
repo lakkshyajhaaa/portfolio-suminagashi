@@ -14,7 +14,7 @@ export default function Home() {
           LAKKSHYA
         </h1>
         <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase ml-2 mt-4 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
-          Architect // System Design
+          building with clarity,intent &amp; love
         </span>
       </div>
 

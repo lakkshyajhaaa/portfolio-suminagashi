@@ -263,7 +263,9 @@ void main() {
   float vignette = smoothstep(0.95, 0.35, distToCenter);
   finalColor *= vignette;
   
-  // (Gritty film grain and frosted glass streaks removed for a smoother, premium aesthetic)
+  // Cinematic Film Grain (Applied to the canvas background to preserve the clarity of DOM glass layers)
+  float grain = fract(sin(dot(st, vec2(12.9898, 78.233)) + time) * 43758.5453);
+  finalColor -= grain * 0.05; // Subtle gritty texture
   
   vec3 color = finalColor;
   
