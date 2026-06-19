@@ -255,17 +255,12 @@ void main() {
   vec3 rimColor = mix(vec3(1.0), uColor4, 0.3);
   finalColor += rimColor * rim * 2.5;
   
-  // Cinematic Vignette: Elegant fade to black at the edges
-  // Make the boundary organic and slightly influenced by the fluid flow
-  vec2 vignetteP = mix(distortedUv, p / 0.8, 0.4);
-  float organicEdge = fbm(vignetteP * 4.0 + time * 0.4) * 0.15;
-  float distToCenter = length(vignetteP - vec2(0.5)) + organicEdge;
-  float vignette = smoothstep(0.95, 0.35, distToCenter);
-  finalColor *= vignette;
+  // Cinematic Vignette removed to keep edges bright and clear
   
-  // Cinematic Film Grain (Applied to the canvas background to preserve the clarity of DOM glass layers)
+  // Cinematic Film Grain
   float grain = fract(sin(dot(st, vec2(12.9898, 78.233)) + time) * 43758.5453);
-  finalColor -= grain * 0.05; // Subtle gritty texture
+  // Add and subtract noise to maintain overall luminosity instead of just darkening
+  finalColor += (grain - 0.5) * 0.06;
   
   vec3 color = finalColor;
   
