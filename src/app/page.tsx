@@ -1,8 +1,16 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Lakkshya Jha",
-  description: "Creative engineering and physical simulations.",
+  title: "Lakkshya Jha | AI Engineer • Full-Stack Developer • Computer Engineering Student",
+  description: "Computer Engineering student at Thapar Institute of Engineering & Technology. Explore AI/ML projects, full-stack web development, UI/UX design, open-source contributions, research, and technical leadership by Lakkshya Jha.",
+  openGraph: {
+    title: "Lakkshya Jha | AI Engineer • Full-Stack Developer",
+    description: "Computer Engineering student at Thapar Institute showcasing AI/ML, full-stack development, research, design, and open-source projects.",
+  },
+  twitter: {
+    title: "Lakkshya Jha | AI Engineer • Full-Stack Developer",
+    description: "Portfolio of Lakkshya Jha featuring AI, software engineering, full-stack development, research, and design.",
+  }
 };
 
 export default function Home() {
