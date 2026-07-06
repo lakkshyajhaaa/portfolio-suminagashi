@@ -28,7 +28,7 @@ export default function About() {
         {/* Main Architectural Statement */}
         <div className="flex flex-col md:col-span-1 md:mt-2 z-10 animate-fade-in">
           <div className="border-t-[1px] border-white/20 pt-4 md:pt-6 w-full">
-            <p className="font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-light mix-blend-difference">
+            <p className="font-sans text-lg md:text-xl tracking-wide text-white/90 leading-relaxed font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
               I build data-driven, decision-oriented systems. From architecting risk-scoring frameworks for AI inference to shipping full-stack platforms for thousands of active users. I thrive in ambiguity—translating raw requirements into scalable logic, and bridging the gap between robust backend engineering and seamless product design.
             </p>
           </div>
@@ -44,7 +44,7 @@ export default function About() {
           <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-4 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
             SKILLS //
           </span>
-          <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white uppercase mix-blend-difference z-10 animate-fade-in">
+          <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white/90 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
             <li>Python / TS / C++</li>
             <li>Machine Learning</li>
             <li>Data Systems</li>
@@ -57,7 +57,7 @@ export default function About() {
           <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-4 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
             EXPERIENCE //
           </span>
-          <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white uppercase mix-blend-difference z-10 animate-fade-in">
+          <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white/90 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
             <li><span className="text-[#ff5500]/80">SWE INTERN</span> @ COE-FS</li>
             <li><span className="text-[#ff5500]/80">SWE INTERN</span> @ CTD</li>
           </ul>
@@ -68,7 +68,7 @@ export default function About() {
           <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-4 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
             LEADERSHIP //
           </span>
-          <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white uppercase mix-blend-difference z-10 animate-fade-in">
+          <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white/90 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
             <li><span className="text-[#ff5500]/80">INNOVATOR</span> @ COE-DS&AI</li>
             <li><span className="text-[#ff5500]/80">SR COORD</span> @ CTD</li>
           </ul>
@@ -84,7 +84,7 @@ export default function About() {
           <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
             01 // HELLO, WORLD.
           </span>
-          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-light mix-blend-difference z-10 animate-fade-in">
+          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white/90 leading-relaxed font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
             <p>I'm Lakkshya, a Computer Engineering student based in India.</p>
             <p>I enjoy building things that begin as questions.</p>
             <p>Sometimes those questions lead to software. Sometimes they become design experiments, research projects, event experiences, or products that solve small everyday problems. More often than not, they start with curiosity and evolve into something unexpected.</p>
@@ -100,7 +100,7 @@ export default function About() {
           <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
             02 // HOW I WORK
           </span>
-          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-light mix-blend-difference z-10 animate-fade-in">
+          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white/90 leading-relaxed font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
             <p>I like working closely with people who care about what they're building.</p>
             <p>Whether it's a technical project, a design challenge, or a community initiative, I believe the best outcomes come from open communication, curiosity, and a willingness to iterate.</p>
             <p>I enjoy understanding the reasoning behind decisions rather than simply executing instructions. Learning how something should work is often as important as building it.</p>
@@ -114,7 +114,7 @@ export default function About() {
           <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
             03 // WHAT I DO
           </span>
-          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-light mix-blend-difference z-10 animate-fade-in">
+          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white/90 leading-relaxed font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
             <p>I build digital experiences, software products, and experimental projects.</p>
             <p>My interests currently revolve around artificial intelligence, software engineering, product design, and interactive web technologies. I enjoy taking ideas from concept to implementation—whether that means designing interfaces, writing code, conducting research, or refining the details that make a product feel intuitive.</p>
             <p>I work across the stack when needed and enjoy learning new tools if they help solve the problem better.</p>
@@ -128,7 +128,7 @@ export default function About() {
           <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
             04 // PHILOSOPHY
           </span>
-          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-light mix-blend-difference z-10 animate-fade-in">
+          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white/90 leading-relaxed font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
             <p>I believe curiosity is a skill.</p>
             <p>The ability to ask better questions, explore unfamiliar territory, and remain excited by the unknown has shaped nearly everything I've built and learned.</p>
             <p>Technology changes. Tools evolve.</p>
