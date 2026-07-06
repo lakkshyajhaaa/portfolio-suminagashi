@@ -281,8 +281,8 @@ const routeConfigs: Record<string, { c1: string, c2: string, c3: string, c4: str
   "/": { c1: "#e2e8f0", c2: "#1e3a8a", c3: "#4c1d95", c4: "#ffffff", line: "#0f172a", behavior: 0.0 }, 
   // Work (Alchemy Forge): Ancient gold, dark crimson, charcoal, ember orange
   "/work": { c1: "#b45309", c2: "#7f1d1d", c3: "#1c1917", c4: "#f59e0b", line: "#450a0a", behavior: 1.0 }, 
-  // About (Botanical Library): Pure white, very dark teal, rich emerald, vibrant emerald
-  "/about": { c1: "#ffffff", c2: "#042f2e", c3: "#065f46", c4: "#10b981", line: "#022c22", behavior: 2.0 },
+  // About (Botanical Library): Dark Emeralds only
+  "/about": { c1: "#064e3b", c2: "#022c22", c3: "#065f46", c4: "#042f2e", line: "#022c22", behavior: 2.0 },
   // Contact (Astral Prophecy): Starry cyan, deep space black, pale moon yellow, amethyst
   "/contact": { c1: "#67e8f9", c2: "#020617", c3: "#fef08a", c4: "#86198f", line: "#000000", behavior: 3.0 }, 
   // Individual Project Pages (Cyber Matrix): Obsidian, bright cyan, neon pink, deep purple
