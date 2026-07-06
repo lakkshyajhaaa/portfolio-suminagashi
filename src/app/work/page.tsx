@@ -17,11 +17,11 @@ export default function Work() {
     <main className="flex min-h-screen flex-col items-center justify-center p-8 md:p-24 bg-transparent">
       
       {/* Brutalist Directory Header */}
-      <div className="absolute top-[80px] left-6 md:top-24 md:left-32 flex flex-col pointer-events-auto z-10 mix-blend-difference animate-fade-in">
-        <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
+      <div className="absolute top-[80px] left-6 md:top-24 md:left-32 flex flex-col pointer-events-auto">
+        <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase drop-shadow-[0_0_5px_rgba(255,85,0,0.5)] z-10 animate-fade-in">
           WORK // SELECTED PROJECTS
         </span>
-        <h1 className="font-sans text-[3.5rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+        <h1 className="font-sans text-[3.5rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] mix-blend-difference z-10 animate-fade-in">
           INDEX.
         </h1>
       </div>

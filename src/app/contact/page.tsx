@@ -10,11 +10,11 @@ export default function Contact() {
     <main className="flex min-h-[100dvh] flex-col justify-between px-6 py-24 md:p-24 md:px-32 bg-transparent">
       
       {/* Top Section: Header */}
-      <div className="flex flex-col w-full pointer-events-auto z-10 mix-blend-difference animate-fade-in">
-        <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ffe4e6] uppercase drop-shadow-[0_0_5px_rgba(255,228,230,0.5)]">
+      <div className="flex flex-col w-full pointer-events-auto">
+        <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ffe4e6] uppercase drop-shadow-[0_0_5px_rgba(255,228,230,0.5)] z-10 animate-fade-in">
           SAY HELLO //
         </span>
-        <h1 className="font-sans text-[3rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+        <h1 className="font-sans text-[3rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] mix-blend-difference z-10 animate-fade-in">
           CONTACT.
         </h1>
       </div>
