@@ -13,11 +13,11 @@ export default function About() {
       <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 pointer-events-auto">
         
         {/* Brutalist Directory Header */}
-        <div className="flex flex-col md:col-span-2 mix-blend-difference z-10 animate-fade-in">
+        <div className="flex flex-col md:col-span-2 z-10 animate-fade-in">
           <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
             PROFILE // ABOUT
           </span>
-          <h1 className="font-sans text-[3rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+          <h1 className="font-sans text-[3rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] mix-blend-difference">
             ABOUT.
           </h1>
           <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="mt-8 md:mt-12 inline-block font-sans text-[10px] tracking-[0.4em] font-bold text-[#67e8f9] uppercase border-[1px] border-[#67e8f9]/50 px-8 py-4 hover:bg-[#67e8f9] hover:text-black transition-all w-fit drop-shadow-[0_0_8px_rgba(103,232,249,0.5)]">
