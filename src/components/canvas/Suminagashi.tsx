@@ -341,52 +341,20 @@ export default function Suminagashi({ isWebGPU, pathname, transitionState }: { i
   useEffect(() => {
     if (!materialRef.current) return;
     
-    // Only trigger if we are in the "entering" state of a new page
-    if (transitionState === "entering" || transitionState === "idle") {
-      const config = getRouteConfig(pathname);
+    const config = getRouteConfig(pathname);
     
-    // Animate colors over time for smooth transition (unless we are in void/rebirth)
+    // Animate colors over time for smooth transition
     gsap.to(materialRef.current.uniforms.uColor1.value, { r: new THREE.Color(config.c1).r, g: new THREE.Color(config.c1).g, b: new THREE.Color(config.c1).b, duration: 2 });
     gsap.to(materialRef.current.uniforms.uColor2.value, { r: new THREE.Color(config.c2).r, g: new THREE.Color(config.c2).g, b: new THREE.Color(config.c2).b, duration: 2 });
     gsap.to(materialRef.current.uniforms.uColor3.value, { r: new THREE.Color(config.c3).r, g: new THREE.Color(config.c3).g, b: new THREE.Color(config.c3).b, duration: 2 });
     gsap.to(materialRef.current.uniforms.uColor4.value, { r: new THREE.Color(config.c4).r, g: new THREE.Color(config.c4).g, b: new THREE.Color(config.c4).b, duration: 2 });
     gsap.to(materialRef.current.uniforms.uLineColor.value, { r: new THREE.Color(config.line).r, g: new THREE.Color(config.line).g, b: new THREE.Color(config.line).b, duration: 2 });
     materialRef.current.uniforms.uBehavior.value = config.behavior;
-    }
-  }, [pathname, transitionState]);
-
-  useEffect(() => {
-    if (!materialRef.current) return;
     
-    switch (transitionState) {
-      case "convergence":
-        gsap.to(materialRef.current.uniforms.uAbsorption, { value: 0.3, duration: 0.6, ease: "power1.in" });
-        break;
-      case "absorption":
-        gsap.to(materialRef.current.uniforms.uAbsorption, { value: 1.0, duration: 0.8, ease: "power2.inOut" });
-        materialRef.current.uniforms.uRebirth.value = 0.0;
-        break;
-      case "void":
-        materialRef.current.uniforms.uAbsorption.value = 1.0;
-        break;
-      case "genesis":
-        materialRef.current.uniforms.uAbsorption.value = 0.0;
-        materialRef.current.uniforms.uRebirth.value = 0.0;
-        gsap.to(materialRef.current.uniforms.uRebirth, { value: 0.3, duration: 0.8, ease: "power1.in" });
-        break;
-      case "reconstruction":
-        gsap.to(materialRef.current.uniforms.uRebirth, { value: 1.0, duration: 0.8, ease: "power2.out" });
-        break;
-      case "settle":
-        gsap.to(materialRef.current.uniforms.uRebirth, { value: 0.0, duration: 0.8, ease: "power1.out" });
-        break;
-      case "idle":
-      default:
-        materialRef.current.uniforms.uAbsorption.value = 0.0;
-        materialRef.current.uniforms.uRebirth.value = 0.0;
-        break;
-    }
-  }, [transitionState]);
+    // Ensure absorption and rebirth are disabled so it doesn't "gobble up"
+    materialRef.current.uniforms.uAbsorption.value = 0.0;
+    materialRef.current.uniforms.uRebirth.value = 0.0;
+  }, [pathname]);
 
   useFrame((state) => {
     if (materialRef.current) {
