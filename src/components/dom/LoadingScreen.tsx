@@ -9,12 +9,11 @@ export default function LoadingScreen() {
   
   const [show, setShow] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
-  const [isFastLoad, setIsFastLoad] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
     if (sessionStorage.getItem('suminagashi_loaded')) {
-      setIsFastLoad(true);
+      setShow(false);
     }
   }, []);
 
@@ -29,7 +28,7 @@ export default function LoadingScreen() {
     const startValue = displayValue;
     
     // Force the counter to take 1.5 seconds to reach 100 for cinematic effect
-    const duration = isFastLoad ? 0 : 1500;
+    const duration = 1500;
     
     const animate = (time: number) => {
       const elapsed = time - start;
@@ -60,10 +59,10 @@ export default function LoadingScreen() {
         if (typeof window !== 'undefined') {
           sessionStorage.setItem('suminagashi_loaded', 'true');
         }
-      }, isFastLoad ? 50 : 500); 
+      }, 500); 
       return () => clearTimeout(timer);
     }
-  }, [displayValue, isFastLoad]);
+  }, [displayValue]);
 
   const displayProgressStr = Math.floor(displayValue).toString().padStart(3, '0');
   const isReady = displayValue >= 99.9;
@@ -78,7 +77,7 @@ export default function LoadingScreen() {
           key="loading"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
-          transition={{ duration: isFastLoad ? 0.8 : 1.5, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[100] bg-black text-white flex flex-col justify-between p-6 md:p-12 pointer-events-auto cursor-wait overflow-hidden"
         >
           {/* Top HUD */}
