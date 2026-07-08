@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Great_Vibes } from "next/font/google";
 import "./globals.css";
 
 const geist = Geist({
   variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const greatVibes = Great_Vibes({
+  weight: "400",
+  variable: "--font-signature",
   subsets: ["latin"],
 });
 
@@ -27,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geist.variable} h-full antialiased`}
+      className={`${geist.variable} ${greatVibes.variable} h-full antialiased`}
     >
       <body id="root" className="min-h-full flex flex-col bg-transparent text-white font-sans selection:bg-white/20">
         <HandTrackingProvider>

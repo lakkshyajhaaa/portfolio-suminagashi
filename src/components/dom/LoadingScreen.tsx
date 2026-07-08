@@ -92,15 +92,21 @@ export default function LoadingScreen() {
             </div>
           </div>
 
-          {/* Central Monolithic Counter */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center">
+          {/* Central Signature */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center pointer-events-none">
+            {/* The signature itself, drawing out left-to-right using clipPath */}
             <motion.h1 
-              className="font-sans text-[28vw] md:text-[22vw] leading-none tracking-[-0.05em] font-bold text-white whitespace-nowrap mix-blend-difference drop-shadow-[0_0_30px_rgba(255,255,255,0.1)]"
+              className="text-[18vw] md:text-[12vw] font-normal text-white mix-blend-difference drop-shadow-[0_0_25px_rgba(255,255,255,0.4)] whitespace-nowrap"
+              style={{ 
+                fontFamily: "var(--font-signature)", 
+                clipPath: `inset(0 ${100 - displayValue}% 0 0)`,
+                WebkitClipPath: `inset(0 ${100 - displayValue}% 0 0)` // for Safari support
+              }}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              {displayProgressStr}
+              Lakkshya Jha
             </motion.h1>
           </div>
 
