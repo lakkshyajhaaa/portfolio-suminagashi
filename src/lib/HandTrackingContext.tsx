@@ -120,143 +120,126 @@ export const HandTrackingProvider = ({ children }: { children: React.ReactNode }
   };
 
   const predict = () => {
-    if (!videoRef.current || !landmarkerRef.current || !isCameraActive) return;
+    try {
+      if (!videoRef.current || !landmarkerRef.current || !isCameraActive) return;
 
-    if (videoRef.current.readyState >= 2) {
-      let startTimeMs = performance.now();
-      
-      // CRITICAL FIX: MediaPipe crashes if the timestamp is not strictly monotonically increasing.
-      // Browsers often clamp performance.now() resolution, which can result in identical timestamps in rapid succession.
-      if (lastVideoTimeRef.current >= startTimeMs) {
-        startTimeMs = lastVideoTimeRef.current + 1;
-      }
-      lastVideoTimeRef.current = startTimeMs;
-      
-      let results;
-      const originalError = console.error;
-      const originalWarn = console.warn;
-      const originalLog = console.log;
-      const originalInfo = console.info;
-      
-      try {
-        // CRITICAL FIX: MediaPipe's WebAssembly backend writes an INFO log to stderr on the first inference frame.
-        // Next.js Turbopack violently intercepts this and throws a massive red Error Overlay thinking the app crashed.
-        // We temporarily silence this specific INFO log across all console streams during inference.
-        const filterXNNPACK = (originalFn: any) => (...args: any[]) => {
-          const msg = args.map(a => String(a)).join(' ');
-          if (msg.includes('TensorFlow Lite XNNPACK') || msg.includes('XNNPACK')) return;
-          originalFn(...args);
-        };
+      if (videoRef.current.readyState >= 2) {
+        let startTimeMs = performance.now();
         
-        console.error = filterXNNPACK(originalError);
-        console.warn = filterXNNPACK(originalWarn);
-        console.log = filterXNNPACK(originalLog);
-        console.info = filterXNNPACK(originalInfo);
+        if (lastVideoTimeRef.current >= startTimeMs) {
+          startTimeMs = lastVideoTimeRef.current + 1;
+        }
+        lastVideoTimeRef.current = startTimeMs;
         
-        results = landmarkerRef.current.detectForVideo(videoRef.current, startTimeMs);
-      } finally {
-        console.error = originalError;
-        console.warn = originalWarn;
-        console.log = originalLog;
-        console.info = originalInfo;
-      }
-      
-      if (results.landmarks && results.landmarks.length > 0) {
-        const indexFingerTip = results.landmarks[0][8];
+        let results = { landmarks: [] as any[] };
+        const originalError = console.error;
+        const originalWarn = console.warn;
+        const originalLog = console.log;
+        const originalInfo = console.info;
         
-        if (indexFingerTip) {
-          // Base position: Index fingertip
-          let targetNormX = 1.0 - indexFingerTip.x;
-          let targetNormY = indexFingerTip.y;
+        try {
+          const filterXNNPACK = (originalFn: any) => (...args: any[]) => {
+            const msg = args.map(a => String(a)).join(' ');
+            if (msg.includes('TensorFlow Lite XNNPACK') || msg.includes('XNNPACK')) return;
+            originalFn(...args);
+          };
           
-          // 3. Pinch Detection & Cursor Stabilization
-          const thumbTip = results.landmarks[0][4];
-          if (thumbTip && indexFingerTip) {
-            // CRITICAL FIX: Ignore the Z-axis for pinch detection! 
-            // Webcams are terrible at estimating depth (Z), making 3D distance calculations extremely "hit or miss".
-            // Relying only on accurate 2D X/Y distance makes pinching 100x more reliable.
-            const distance = Math.sqrt(
-              Math.pow(indexFingerTip.x - thumbTip.x, 2) + 
-              Math.pow(indexFingerTip.y - thumbTip.y, 2)
-            );
+          console.error = filterXNNPACK(originalError);
+          console.warn = filterXNNPACK(originalWarn);
+          console.log = filterXNNPACK(originalLog);
+          console.info = filterXNNPACK(originalInfo);
+          
+          results = landmarkerRef.current.detectForVideo(videoRef.current, startTimeMs);
+        } catch (e) {
+          // Ignore prediction errors (e.g. monotonically increasing timestamp errors on soft navigation)
+        } finally {
+          console.error = originalError;
+          console.warn = originalWarn;
+          console.log = originalLog;
+          console.info = originalInfo;
+        }
+        
+        if (results && results.landmarks && results.landmarks.length > 0) {
+          const indexFingerTip = results.landmarks[0][8];
+          
+          if (indexFingerTip) {
+            let targetNormX = 1.0 - indexFingerTip.x;
+            let targetNormY = indexFingerTip.y;
             
-            // HYSTERESIS LOGIC: 
-            // The trigger threshold must be generous enough to easily click, 
-            // but the release threshold must be tight enough so that naturally relaxing the fingers 
-            // registers as a "release", allowing the user to pinch again rapidly.
-            let currentlyPinching = isPinching;
-            if (distance < 0.08) {
-               currentlyPinching = true;  // Trigger pinch
-            } else if (distance > 0.11) {
-               currentlyPinching = false; // Relax fingers slightly to release
+            const thumbTip = results.landmarks[0][4];
+            if (thumbTip && indexFingerTip) {
+              const distance = Math.sqrt(
+                Math.pow(indexFingerTip.x - thumbTip.x, 2) + 
+                Math.pow(indexFingerTip.y - thumbTip.y, 2)
+              );
+              
+              let currentlyPinching = isPinching;
+              if (distance < 0.08) {
+                 currentlyPinching = true;
+              } else if (distance > 0.11) {
+                 currentlyPinching = false;
+              }
+              
+              setIsPinching(currentlyPinching);
+              
+              const midX = 1.0 - ((indexFingerTip.x + thumbTip.x) / 2);
+              const midY = (indexFingerTip.y + thumbTip.y) / 2;
+              
+              const pinchBlend = Math.max(0, Math.min(1, (0.12 - distance) / (0.12 - 0.05)));
+              
+              targetNormX = targetNormX * (1 - pinchBlend) + midX * pinchBlend;
+              targetNormY = targetNormY * (1 - pinchBlend) + midY * pinchBlend;
             }
             
-            setIsPinching(currentlyPinching);
+            const rawThreeX = (targetNormX * 2) - 1;
+            const rawThreeY = -(targetNormY * 2) + 1;
             
-            // --- DYNAMIC PINCH STABILIZATION ---
-            // When pinching, the physical index finger moves down to meet the thumb.
-            // This normally causes the cursor to "slip" off the button right before clicking.
-            // To fix this, we smoothly shift the tracking point from the index tip to the midpoint 
-            // between the fingers as they close. This perfectly cancels out the finger movement!
-            const midX = 1.0 - ((indexFingerTip.x + thumbTip.x) / 2);
-            const midY = (indexFingerTip.y + thumbTip.y) / 2;
+            let smoothedRawX = rawThreeX;
+            let smoothedRawY = rawThreeY;
             
-            // Blend from index tip (0.0) to midpoint (1.0) between 0.12 and 0.05 distance
-            const pinchBlend = Math.max(0, Math.min(1, (0.12 - distance) / (0.12 - 0.05)));
+            if (lastRawPosition.current) {
+              const alpha = 0.4;
+              smoothedRawX = lastRawPosition.current.x * (1 - alpha) + rawThreeX * alpha;
+              smoothedRawY = lastRawPosition.current.y * (1 - alpha) + rawThreeY * alpha;
+            }
             
-            targetNormX = targetNormX * (1 - pinchBlend) + midX * pinchBlend;
-            targetNormY = targetNormY * (1 - pinchBlend) + midY * pinchBlend;
-          }
-          
-          // 1. Raw Position ([-1, 1]) for the video overlay
-          const rawThreeX = (targetNormX * 2) - 1;
-          const rawThreeY = -(targetNormY * 2) + 1;
-          
-          let smoothedRawX = rawThreeX;
-          let smoothedRawY = rawThreeY;
-          
-          if (lastRawPosition.current) {
-            const alpha = 0.4;
-            smoothedRawX = lastRawPosition.current.x * (1 - alpha) + rawThreeX * alpha;
-            smoothedRawY = lastRawPosition.current.y * (1 - alpha) + rawThreeY * alpha;
-          }
-          
-          lastRawPosition.current = { x: smoothedRawX, y: smoothedRawY };
+            lastRawPosition.current = { x: smoothedRawX, y: smoothedRawY };
 
-          // 2. Accelerated Position ([-1, 1]) for the screen
-          const SENSITIVITY = 1.5; // Lower sensitivity for stable, precise movements
-          
-          let normX = ((targetNormX - 0.5) * SENSITIVITY) + 0.5;
-          let normY = ((targetNormY - 0.5) * SENSITIVITY) + 0.5;
-          
-          normX = Math.max(0, Math.min(1, normX));
-          normY = Math.max(0, Math.min(1, normY));
-          
-          const threeX = (normX * 2) - 1;
-          const threeY = -(normY * 2) + 1;
-          
-          let smoothedX = threeX;
-          let smoothedY = threeY;
-          if (lastPosition.current) {
-            const alpha = 0.85; 
-            smoothedX = lastPosition.current.x * (1 - alpha) + threeX * alpha;
-            smoothedY = lastPosition.current.y * (1 - alpha) + threeY * alpha;
-          }
-          
-          lastPosition.current = { x: smoothedX, y: smoothedY };
+            const SENSITIVITY = 1.5;
+            
+            let normX = ((targetNormX - 0.5) * SENSITIVITY) + 0.5;
+            let normY = ((targetNormY - 0.5) * SENSITIVITY) + 0.5;
+            
+            normX = Math.max(0, Math.min(1, normX));
+            normY = Math.max(0, Math.min(1, normY));
+            
+            const threeX = (normX * 2) - 1;
+            const threeY = -(normY * 2) + 1;
+            
+            let smoothedX = threeX;
+            let smoothedY = threeY;
+            if (lastPosition.current) {
+              const alpha = 0.85; 
+              smoothedX = lastPosition.current.x * (1 - alpha) + threeX * alpha;
+              smoothedY = lastPosition.current.y * (1 - alpha) + threeY * alpha;
+            }
+            
+            lastPosition.current = { x: smoothedX, y: smoothedY };
 
-          // Only trigger a React re-render if the hand was previously lost
-          if (!isHandVisible) setIsHandVisible(true);
+            if (!isHandVisible) setIsHandVisible(true);
+          }
+        } else {
+          if (isHandVisible) setIsHandVisible(false);
+          setIsPinching(false);
+          lastPosition.current = null;
+          lastRawPosition.current = null;
         }
-      } else {
-        if (isHandVisible) setIsHandVisible(false);
-        setIsPinching(false);
-        lastPosition.current = null;
-        lastRawPosition.current = null;
       }
+    } catch (err) {
+      console.error("Critical error in predict loop:", err);
+    } finally {
+      rafId.current = requestAnimationFrame(predict);
     }
-
-    rafId.current = requestAnimationFrame(predict);
   };
 
   const toggleCamera = () => {
