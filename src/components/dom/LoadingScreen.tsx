@@ -11,11 +11,6 @@ export default function LoadingScreen() {
   const { active, progress, total, loaded } = useProgress();
   
   const [show, setShow] = useState(true);
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const [displayValue, setDisplayValue] = useState(0);
 
@@ -47,7 +42,7 @@ export default function LoadingScreen() {
 
   const isReady = displayValue >= 99.9;
 
-  if (!isMounted) return null;
+
   if (!show && displayValue === 0) return null;
 
   return (
