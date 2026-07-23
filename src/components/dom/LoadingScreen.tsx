@@ -73,7 +73,7 @@ export default function LoadingScreen() {
                 initial={{ pathLength: 0, fill: "transparent", stroke: "transparent", strokeWidth: 1 }}
                 animate={{ pathLength: 1, fill: "white", stroke: "white" }}
                 transition={{ 
-                  pathLength: { duration: 1, ease: [0.65, 0, 0.35, 1] }, 
+                  pathLength: { duration: 1, ease: "linear" }, 
                   fill: { duration: 0.4, delay: 0.8 }, 
                   stroke: { duration: 0.1 } 
                 }}
