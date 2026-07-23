@@ -74,7 +74,7 @@ export default function LoadingScreen() {
                     animate={{ x: 900 }}
                     transition={{ duration: 1.8, ease: "easeInOut" }}
                   >
-                    <polygon points="-500,-100 300,-100 200,300 -500,300" fill="white" />
+                    <polygon points="-5000,-100 300,-100 200,300 -5000,300" fill="white" />
                   </motion.g>
                 </mask>
               </defs>
