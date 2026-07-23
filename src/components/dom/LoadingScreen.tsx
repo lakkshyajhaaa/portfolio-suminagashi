@@ -20,7 +20,7 @@ export default function LoadingScreen() {
   useEffect(() => {
     let animationFrameId: number;
     let start: number | null = null;
-    const duration = 3000;
+    const duration = 3500;
     
     const animate = (time: number) => {
       if (start === null) start = time;
@@ -34,7 +34,7 @@ export default function LoadingScreen() {
       } else {
         const timer = setTimeout(() => {
           setShow(false);
-        }, 200);
+        }, 100);
       }
     };
     
@@ -54,7 +54,7 @@ export default function LoadingScreen() {
           key="loading"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
-          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
           className="fixed inset-0 z-[100] bg-black text-white flex justify-center items-center pointer-events-auto cursor-wait overflow-hidden"
         >
           <div className="w-full max-w-2xl px-8 md:px-16 drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]">
@@ -68,8 +68,8 @@ export default function LoadingScreen() {
                 initial={{ pathLength: 0, fill: "transparent", stroke: "white", strokeWidth: 1 }}
                 animate={{ pathLength: 1, fill: "white" }}
                 transition={{ 
-                  pathLength: { duration: 2, ease: "linear", delay: 0.3 }, 
-                  fill: { duration: 0.4, delay: 2.3 }
+                  pathLength: { duration: 3, ease: "linear" }, 
+                  fill: { duration: 0.5, delay: 3 }
                 }}
               />
             </svg>
