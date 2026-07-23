@@ -14,11 +14,11 @@ export default function LoadingScreen() {
 
   const [displayValue, setDisplayValue] = useState(0);
 
-  // Smoothly animate displayValue from 0 to 100 over 3 seconds
+  // Smoothly animate displayValue from 0 to 100 over a set duration
   useEffect(() => {
     let animationFrameId: number;
     let start: number | null = null;
-    const duration = 1200;
+    const duration = 3200;
     
     const animate = (time: number) => {
       if (start === null) start = time;
@@ -32,7 +32,7 @@ export default function LoadingScreen() {
       } else {
         const timer = setTimeout(() => {
           setShow(false);
-        }, 50);
+        }, 200);
       }
     };
     
@@ -41,7 +41,6 @@ export default function LoadingScreen() {
   }, []);
 
   const isReady = displayValue >= 99.9;
-
 
   if (!show && displayValue === 0) return null;
 
@@ -58,7 +57,7 @@ export default function LoadingScreen() {
           <motion.div 
             initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 3, ease: "easeOut" }}
+            transition={{ duration: 3.5, ease: "easeOut" }}
             className="w-full max-w-4xl px-8 flex justify-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"
           >
             <svg viewBox="0 0 800 200" className="w-full h-auto" style={{ overflow: 'visible' }}>
@@ -67,7 +66,7 @@ export default function LoadingScreen() {
                   <motion.g
                     initial={{ x: -800 }}
                     animate={{ x: 900 }}
-                    transition={{ duration: 1.8, ease: "easeInOut" }}
+                    transition={{ duration: 3.0, ease: "easeInOut" }}
                   >
                     <polygon points="-5000,-100 300,-100 200,300 -5000,300" fill="white" />
                   </motion.g>
