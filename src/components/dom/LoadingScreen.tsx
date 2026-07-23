@@ -60,15 +60,15 @@ export default function LoadingScreen() {
           transition={{ duration: 0.5, ease: "easeInOut" }}
           className="fixed inset-0 z-[100] bg-black text-white flex justify-center items-center pointer-events-auto cursor-wait overflow-hidden"
         >
-          <div className="w-full max-w-lg px-8 drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]">
-            <svg viewBox="0 0 400 100" className="w-full h-auto">
+          <div className="w-full max-w-4xl px-8 drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]">
+            <svg viewBox="0 0 800 200" className="w-full h-auto" style={{ overflow: 'visible' }}>
               <defs>
-                <mask id="writeMask" maskUnits="userSpaceOnUse" x="-50" y="-50" width="500" height="200">
+                <mask id="writeMask" maskUnits="userSpaceOnUse" x="-200" y="-200" width="1200" height="600">
                   <motion.path
-                    d="M 10,80 C 27,-10 17,110 35,80 C 53,-10 42,110 60,80 C 78,-10 68,110 86,80 C 104,-10 94,110 111,80 C 129,-10 119,110 137,80 C 154,-10 144,110 162,80 C 180,-10 170,110 187,80 C 205,-10 195,110 213,80 C 230,-10 220,110 238,80 C 256,-10 246,110 263,80 C 281,-10 271,110 289,80 C 306,-10 296,110 314,80 C 332,-10 322,110 339,80 C 357,-10 347,110 365,80 C 382,-10 372,110 390,80 C 400,-10 390,110 410,80"
+                    d="M -50,220 C -18.5,-70 -36.5,270 -5.0,220 C 26.5,-70 8.5,270 40.0,220 C 71.5,-70 53.5,270 85.0,220 C 116.5,-70 98.5,270 130.0,220 C 161.5,-70 143.5,270 175.0,220 C 206.5,-70 188.5,270 220.0,220 C 251.5,-70 233.5,270 265.0,220 C 296.5,-70 278.5,270 310.0,220 C 341.5,-70 323.5,270 355.0,220 C 386.5,-70 368.5,270 400.0,220 C 431.5,-70 413.5,270 445.0,220 C 476.5,-70 458.5,270 490.0,220 C 521.5,-70 503.5,270 535.0,220 C 566.5,-70 548.5,270 580.0,220 C 611.5,-70 593.5,270 625.0,220 C 656.5,-70 638.5,270 670.0,220 C 701.5,-70 683.5,270 715.0,220 C 746.5,-70 728.5,270 760.0,220 C 791.5,-70 773.5,270 805.0,220 C 836.5,-70 818.5,270 850.0,220"
                     fill="none"
                     stroke="white"
-                    strokeWidth="45"
+                    strokeWidth="80"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     initial={{ pathLength: 0 }}
@@ -84,7 +84,8 @@ export default function LoadingScreen() {
                 textAnchor="middle" 
                 fill="white" 
                 mask="url(#writeMask)"
-                className={`${signatureFont.className} text-[60px]`}
+                className={`${signatureFont.className}`}
+                fontSize="130"
               >
                 Lakkshya Jha
               </text>
