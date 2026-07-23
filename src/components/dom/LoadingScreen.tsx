@@ -12,37 +12,15 @@ export default function LoadingScreen() {
   
   const [show, setShow] = useState(true);
 
-  const [displayValue, setDisplayValue] = useState(0);
-
-  // Smoothly animate displayValue from 0 to 100 over a set duration
+  // Unmount loading screen after animation completes
   useEffect(() => {
-    let animationFrameId: number;
-    let start: number | null = null;
-    const duration = 3200;
-    
-    const animate = (time: number) => {
-      if (start === null) start = time;
-      const elapsed = time - start;
-      const t = Math.min(elapsed / duration, 1);
-      
-      setDisplayValue(t * 100);
-      
-      if (t < 1) {
-        animationFrameId = requestAnimationFrame(animate);
-      } else {
-        const timer = setTimeout(() => {
-          setShow(false);
-        }, 200);
-      }
-    };
-    
-    animationFrameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrameId);
+    const timer = setTimeout(() => {
+      setShow(false);
+    }, 3200);
+    return () => clearTimeout(timer);
   }, []);
 
-  const isReady = displayValue >= 99.9;
-
-  if (!show && displayValue === 0) return null;
+  if (!show) return null;
 
   return (
     <AnimatePresence>
