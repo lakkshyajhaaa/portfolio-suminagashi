@@ -61,10 +61,10 @@ export default function LoadingScreen() {
           className="fixed inset-0 z-[100] bg-[#050505] text-white flex flex-col justify-center items-center pointer-events-auto cursor-wait overflow-hidden"
         >
           <motion.div 
-            initial={{ scale: 0.95, filter: 'drop-shadow(0px 0px 0px rgba(255,255,255,0))' }}
-            animate={{ scale: 1, filter: 'drop-shadow(0px 0px 25px rgba(255,255,255,0.4))' }}
+            initial={{ scale: 0.95 }}
+            animate={{ scale: 1 }}
             transition={{ duration: 3, ease: "easeOut" }}
-            className="w-full max-w-4xl px-8 flex justify-center"
+            className="w-full max-w-4xl px-8 flex justify-center drop-shadow-[0_0_20px_rgba(255,255,255,0.3)]"
           >
             <svg viewBox="0 0 800 200" className="w-full h-auto" style={{ overflow: 'visible' }}>
               <defs>
