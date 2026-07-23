@@ -20,7 +20,7 @@ export default function LoadingScreen() {
     return () => clearTimeout(timer);
   }, []);
 
-  if (!show) return null;
+
 
   return (
     <AnimatePresence>
