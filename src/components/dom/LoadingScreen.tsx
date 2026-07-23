@@ -20,7 +20,7 @@ export default function LoadingScreen() {
   useEffect(() => {
     let animationFrameId: number;
     let start: number | null = null;
-    const duration = 2800;
+    const duration = 1200;
     
     const animate = (time: number) => {
       if (start === null) start = time;
@@ -34,7 +34,7 @@ export default function LoadingScreen() {
       } else {
         const timer = setTimeout(() => {
           setShow(false);
-        }, 400);
+        }, 200);
       }
     };
     
@@ -60,7 +60,7 @@ export default function LoadingScreen() {
           <motion.div 
             initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 3, ease: "easeOut" }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
             className="w-full max-w-2xl px-8 md:px-16 drop-shadow-[0_0_25px_rgba(255,255,255,0.5)]"
           >
             <svg
@@ -73,8 +73,8 @@ export default function LoadingScreen() {
                 initial={{ pathLength: 0, fill: "transparent", stroke: "transparent", strokeWidth: 1 }}
                 animate={{ pathLength: 1, fill: "white", stroke: "white" }}
                 transition={{ 
-                  pathLength: { duration: 2.2, ease: [0.65, 0, 0.35, 1] }, 
-                  fill: { duration: 0.6, delay: 2.0 }, 
+                  pathLength: { duration: 1, ease: [0.65, 0, 0.35, 1] }, 
+                  fill: { duration: 0.4, delay: 0.8 }, 
                   stroke: { duration: 0.1 } 
                 }}
               />
