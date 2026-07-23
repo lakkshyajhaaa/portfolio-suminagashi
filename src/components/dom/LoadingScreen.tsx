@@ -3,6 +3,9 @@
 import { useProgress } from "@react-three/drei";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Dawning_of_a_New_Day } from "next/font/google";
+
+const signatureFont = Dawning_of_a_New_Day({ weight: '400', subsets: ['latin'] });
 
 export default function LoadingScreen() {
   const { active, progress, total, loaded } = useProgress();
