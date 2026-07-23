@@ -57,10 +57,15 @@ export default function LoadingScreen() {
           key="loading"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] bg-black text-white flex justify-center items-center pointer-events-auto cursor-wait overflow-hidden"
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="fixed inset-0 z-[100] bg-[#050505] text-white flex flex-col justify-center items-center pointer-events-auto cursor-wait overflow-hidden"
         >
-          <div className="w-full max-w-4xl px-8 drop-shadow-[0_0_25px_rgba(255,255,255,0.5)] flex justify-center">
+          <motion.div 
+            initial={{ scale: 0.95, filter: 'drop-shadow(0px 0px 0px rgba(255,255,255,0))' }}
+            animate={{ scale: 1, filter: 'drop-shadow(0px 0px 25px rgba(255,255,255,0.4))' }}
+            transition={{ duration: 3, ease: "easeOut" }}
+            className="w-full max-w-4xl px-8 flex justify-center"
+          >
             <svg viewBox="0 0 800 200" className="w-full h-auto" style={{ overflow: 'visible' }}>
               <defs>
                 <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
@@ -77,7 +82,7 @@ export default function LoadingScreen() {
                     filter="url(#blur)"
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
-                    transition={{ duration: 1.2, ease: "linear" }}
+                    transition={{ duration: 1.8, ease: "easeInOut" }}
                   />
                 </mask>
               </defs>
@@ -94,7 +99,15 @@ export default function LoadingScreen() {
                 Lakkshya Jha
               </text>
             </svg>
-          </div>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 1.5, ease: "easeOut" }}
+            className="text-neutral-500 tracking-[0.4em] text-sm mt-4 font-light"
+          >
+            CREATIVE DEVELOPER
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
