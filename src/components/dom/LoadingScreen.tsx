@@ -61,10 +61,10 @@ export default function LoadingScreen() {
           className="fixed inset-0 z-[100] bg-black text-white flex justify-center items-center pointer-events-auto cursor-wait overflow-hidden"
         >
           <motion.div 
-            initial={{ clipPath: "inset(0 100% 0 0)" }}
-            animate={{ clipPath: "inset(0 0% 0 0)" }}
+            initial={{ clipPath: "inset(-50% 100% -50% -50%)" }}
+            animate={{ clipPath: "inset(-50% -50% -50% -50%)" }}
             transition={{ duration: 1.1, ease: "easeInOut" }}
-            className="w-full max-w-2xl px-8 md:px-16 drop-shadow-[0_0_25px_rgba(255,255,255,0.5)] flex justify-center items-center"
+            className="w-max px-4 drop-shadow-[0_0_25px_rgba(255,255,255,0.5)] flex justify-center items-center"
           >
             <span className={`${signatureFont.className} text-7xl md:text-8xl lg:text-9xl text-white whitespace-nowrap`}>
               Lakkshya Jha
