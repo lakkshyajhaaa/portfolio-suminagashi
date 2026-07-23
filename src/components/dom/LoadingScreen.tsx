@@ -28,6 +28,7 @@ export default function LoadingScreen() {
         <motion.div
           key="loading"
           initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.5, ease: "easeInOut" }}
           className="fixed inset-0 z-[100] bg-[#050505] text-white flex flex-col justify-center items-center pointer-events-auto cursor-wait overflow-hidden"
@@ -42,7 +43,7 @@ export default function LoadingScreen() {
               <defs>
                 <mask id="writeMask" maskUnits="userSpaceOnUse" x="-1000" y="-1000" width="3000" height="3000">
                   <motion.g
-                    initial={{ x: -800 }}
+                    initial={{ x: 100 }}
                     animate={{ x: 900 }}
                     transition={{ duration: 3.0, ease: "easeInOut" }}
                   >
