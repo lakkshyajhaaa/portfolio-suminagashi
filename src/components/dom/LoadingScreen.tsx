@@ -43,7 +43,7 @@ export default function LoadingScreen() {
               <defs>
                 <mask id="writeMask" maskUnits="userSpaceOnUse" x="-1000" y="-1000" width="3000" height="3000">
                   <motion.g
-                    initial={{ x: 100 }}
+                    initial={{ x: -300 }}
                     animate={{ x: 900 }}
                     transition={{ duration: 3.0, ease: "easeInOut" }}
                   >
