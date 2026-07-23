@@ -87,14 +87,7 @@ export default function LoadingScreen() {
               </text>
             </svg>
           </motion.div>
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 1.5, ease: "easeOut" }}
-            className="text-neutral-500 tracking-[0.4em] text-sm mt-4 font-light"
-          >
-            CREATIVE DEVELOPER
-          </motion.div>
+
         </motion.div>
       )}
     </AnimatePresence>
