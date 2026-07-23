@@ -68,7 +68,7 @@ export default function LoadingScreen() {
           >
             <svg viewBox="0 0 800 200" className="w-full h-auto" style={{ overflow: 'visible' }}>
               <defs>
-                <mask id="writeMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1000" height="200">
+                <mask id="writeMask" maskUnits="userSpaceOnUse" x="-1000" y="-1000" width="3000" height="3000">
                   <motion.g
                     initial={{ x: -800 }}
                     animate={{ x: 900 }}
