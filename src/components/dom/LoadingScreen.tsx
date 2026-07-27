@@ -4,11 +4,14 @@ import { useProgress } from "@react-three/drei";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Meddon } from "next/font/google";
+import { usePathname } from "next/navigation";
 
 const signatureFont = Meddon({ weight: '400', subsets: ['latin'] });
 
 export default function LoadingScreen() {
   const { active, progress, total, loaded } = useProgress();
+  const pathname = usePathname();
+  const isHomepage = pathname === "/";
   
   const [show, setShow] = useState(true);
   const [step, setStep] = useState(0);
@@ -48,7 +51,7 @@ export default function LoadingScreen() {
   if (!useTerminalMode) {
     return (
       <AnimatePresence>
-        {show && (
+        {show && isHomepage && (
           <motion.div
             key="loading"
             initial={{ opacity: 1 }}
@@ -98,7 +101,7 @@ export default function LoadingScreen() {
   // TERMINAL MODE
   return (
     <AnimatePresence>
-      {show && (
+      {show && isHomepage && (
         <motion.div
           key="terminal-loading"
           initial={{ opacity: 1 }}
