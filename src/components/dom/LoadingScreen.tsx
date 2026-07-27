@@ -16,7 +16,9 @@ export default function LoadingScreen() {
   // Set to false to revert to the signature loading screen
   const useTerminalMode = true;
 
-  // Unmount loading screen after animation completes
+  // Unmount loading screen after animation completes and assets are loaded
+  const [minTimePassed, setMinTimePassed] = useState(false);
+
   useEffect(() => {
     let stepsTimer: NodeJS.Timeout;
     
@@ -27,7 +29,7 @@ export default function LoadingScreen() {
     }
     
     const timer = setTimeout(() => {
-      setShow(false);
+      setMinTimePassed(true);
     }, useTerminalMode ? 4500 : 3200);
 
     return () => {
@@ -35,6 +37,13 @@ export default function LoadingScreen() {
       if (stepsTimer) clearInterval(stepsTimer);
     };
   }, [useTerminalMode]);
+
+  useEffect(() => {
+    // Hide the loading screen only when the minimum time has passed AND assets are fully loaded
+    if (minTimePassed && !active) {
+      setShow(false);
+    }
+  }, [minTimePassed, active]);
 
   if (!useTerminalMode) {
     return (
