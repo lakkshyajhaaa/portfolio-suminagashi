@@ -8,13 +8,40 @@ role: "Software Engineering Intern"
 techStack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Recharts"]
 ---
 
-Owned end-to-end delivery of a full-stack attendance management platform adopted by 3,000+ students and trainers at Thapar University.
+Owned end-to-end delivery of a production-ready web application for class/session management and attendance tracking, adopted by 3,000+ students and trainers at Thapar University.
+
+## Features by Role
+
+The platform is designed with distinct role-based access and workflows:
+
+### Trainers
+- Create and manage sessions (subject, topic, duration, type).
+- Generate real-time attendance codes with a strict 20-second expiry.
+- Record session notes and view registered students and their attendance.
+
+### Students
+- Register for upcoming sessions.
+- Enter time-bound attendance codes to verify presence.
+- Track total study hours, attendance rates, and achievements.
+- Access session notes provided by trainers.
+
+### Admins
+- Manage trainers, students, and overall system access.
+- View all sessions, edit notes, and analyze system-wide analytics.
 
 ## Architecture & Security
 
 Built to handle high-volume concurrent traffic during peak attendance periods, the platform replaces manual tracking with a secure, highly-available digital workflow.
 
-- **Fraud Prevention:** Designed a robust control for attendance verification using time-bound 6-digit codes (20-second expiry).
-- **Rate-Limiting:** Implemented strict request thresholds (5 attempts/min per student) to directly reduce the known abuse vector of proxy attendance.
-- **RBAC & Authentication:** Defined role-based access policies (Admin, Trainer, Student) utilizing JWT authentication and secure email verification workflows.
-- **Data Visualization:** Engineered 15+ RESTful API endpoints feeding directly into comprehensive analytics dashboards powered by Recharts, ensuring stakeholder visibility.
+- **Fraud Prevention:** Designed a robust control for attendance verification using time-bound 6-digit codes.
+- **Rate-Limiting:** Implemented strict request thresholds (5 attempts/min per student) to directly reduce proxy attendance.
+- **RBAC & Authentication:** Defined role-based access policies utilizing NextAuth.js with JWT and secure cookies.
+- **Data Security:** Password hashing via bcrypt (12 rounds), robust input validation using Zod schemas, and SQL injection protection via Prisma ORM.
+- **Data Visualization:** Engineered 15+ RESTful API endpoints feeding directly into comprehensive analytics dashboards powered by Recharts.
+
+## Tech Stack & Deployment
+
+- **Frontend:** Next.js 14 (App Router), TypeScript, TailwindCSS, shadcn/ui, Recharts
+- **Backend:** Next.js API Routes (REST)
+- **Database:** PostgreSQL managed with Prisma ORM
+- **Deployment:** Vercel (Frontend & API) and Railway/Render (Database)
