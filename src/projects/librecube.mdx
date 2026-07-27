@@ -1,0 +1,15 @@
+---
+id: "06"
+slug: "librecube"
+name: "LIBRECUBE"
+type: "OPEN SOURCE"
+status: "MERGED"
+role: "Open Source Contributor"
+techStack: ["Python", "Yamcs", "XML", "Docker"]
+---
+
+Contributed to LibreCube by developing a Python utility to modernize their mission control telemetry workflows. 
+
+I wrote `convert_xtce.py`, a script that parses traditional `xtce.xml` schema using `ElementTree` and dynamically exports it into a Yamcs-compliant legacy `.xls` format (Excel 97-2003) utilizing the `xlwt` library. The script autonomously traverses the XML DOM and separates telemetry data into organized sheets (Parameters, Commands, Arguments, Containers) while also generating the mandatory General sheet containing system configurations.
+
+To ensure production readiness, I validated the script by mounting the generated spreadsheet into a local Yamcs Docker container, booting the server, and querying the Yamcs HTTP API. This confirmed that all 35 parameters, 3 containers, and 3 commands from the original XTCE were flawlessly loaded into the Mission Database without validation errors. The Merge Request was successfully tested and merged into the prototype repository.
