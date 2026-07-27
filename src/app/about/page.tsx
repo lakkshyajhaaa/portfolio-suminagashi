@@ -60,6 +60,7 @@ export default function About() {
           <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white/90 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
             <li><span className="text-[#f43f5e]/80">SWE INTERN</span> @ COE-FS</li>
             <li><span className="text-[#f43f5e]/80">SWE INTERN</span> @ CTD</li>
+            <li><span className="text-[#f43f5e]/80">OS CONTRIB</span> @ LIBRECUBE</li>
           </ul>
         </div>
 
@@ -115,7 +116,7 @@ export default function About() {
             03 // WHAT I DO
           </span>
           <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white/90 leading-relaxed font-light drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
-            <p>I build digital experiences, software products, and experimental projects.</p>
+            <p>I build digital experiences, software products, and experimental projects. I am also an active open-source contributor, engaging with real-world codebases to solve robust engineering problems.</p>
             <p>My interests currently revolve around artificial intelligence, software engineering, product design, and interactive web technologies. I enjoy taking ideas from concept to implementation—whether that means designing interfaces, writing code, conducting research, or refining the details that make a product feel intuitive.</p>
             <p>I work across the stack when needed and enjoy learning new tools if they help solve the problem better.</p>
             <p>Some technologies and tools I frequently use include: Python • C++ • JavaScript • TypeScript • React • HTML • CSS • Git • GitHub • Firebase • Figma • Blender • Linux.</p>
