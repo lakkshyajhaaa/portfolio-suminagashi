@@ -188,21 +188,19 @@ export default function LoadingScreen() {
             )}
           </div>
           
-          {/* Functional barcode reading '120906' */}
+          {/* Decorative barcode-like elements bottom right */}
           {step > 5 && (
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0.3, 0.6, 0.4, 0.7] }}
-              transition={{ repeat: Infinity, duration: 3, repeatType: "reverse" }}
-              className="absolute bottom-8 right-8 sm:bottom-12 sm:right-12 flex flex-col items-end gap-1 text-gray-300"
-            >
-              <svg viewBox="0 0 136 58" className="h-5 sm:h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path stroke="currentColor" strokeWidth="4" d="M2 58L2 0M28 58L28 0M46 58L46 0M74 58L74 0M90 58L90 0M112 58L112 0M134 58L134 0" />
-                <path stroke="currentColor" strokeWidth="2" d="M7 58L7 0M23 58L23 0M53 58L53 0M59 58L59 0M67 58L67 0M81 58L81 0M99 58L99 0M129 58L129 0" />
-                <path stroke="currentColor" strokeWidth="6" d="M15 58L15 0M37 58L37 0M105 58L105 0M123 58L123 0" />
-              </svg>
-              <div className="font-mono text-[8px] text-gray-500 tracking-[0.2em]">120906</div>
-            </motion.div>
+            <div className="absolute bottom-8 right-8 sm:bottom-12 sm:right-12 flex gap-1 opacity-60">
+              {[...Array(24)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: Math.random() > 0.5 ? 1 : 0.2 }}
+                  transition={{ repeat: Infinity, duration: Math.random() * 2 + 1, repeatType: "reverse" }}
+                  className={`w-1 sm:w-1.5 h-4 sm:h-6 bg-gray-300`}
+                />
+              ))}
+            </div>
           )}
         </motion.div>
       )}
