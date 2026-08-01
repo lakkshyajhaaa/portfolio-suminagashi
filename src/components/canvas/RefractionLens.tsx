@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { MeshTransmissionMaterial, Float } from "@react-three/drei";
+import { MeshTransmissionMaterial, Float, Bvh } from "@react-three/drei";
 import * as THREE from "three";
 import { usePathname } from "next/navigation";
 import { useHandTracking } from "@/lib/HandTrackingContext";
@@ -48,23 +48,25 @@ export default function RefractionLens() {
         Z-index is explicitly set to 1 so it physically floats *above* the Suminagashi background canvas 
         which sits at Z=0. This allows it to capture and refract the background perfectly.
       */}
-      <mesh ref={meshRef} position={[0, 0, 1]}>
-        {/* A massive 20-sided geometric prism. Strict, mathematical, brutalist. */}
-        <icosahedronGeometry args={[3, 0]} />
-        <MeshTransmissionMaterial
-          transmission={1} // Full glass transmission
-          thickness={1.5} // Physical thickness of the glass
-          roughness={0.1} // Increased roughness slightly to catch the specs of color
-          ior={1.2} // Index of Refraction
-          chromaticAberration={0.3} // CRANKED UP: This splits the light into gorgeous rainbow specs!
-          anisotropy={0.5} // Stretches the light reflections to look like cinematic anamorphic flares
-          backside={true} // Renders the inside of the glass for double-refraction
-          transparent={true}
-          opacity={1}
-          color="#ffffff"
-          resolution={1024} // High-res refraction buffer
-        />
-      </mesh>
+      <Bvh firstHitOnly>
+        <mesh ref={meshRef} position={[0, 0, 1]}>
+          {/* A massive 20-sided geometric prism. Strict, mathematical, brutalist. */}
+          <icosahedronGeometry args={[3, 0]} />
+          <MeshTransmissionMaterial
+            transmission={1} // Full glass transmission
+            thickness={1.5} // Physical thickness of the glass
+            roughness={0.1} // Increased roughness slightly to catch the specs of color
+            ior={1.2} // Index of Refraction
+            chromaticAberration={0.3} // CRANKED UP: This splits the light into gorgeous rainbow specs!
+            anisotropy={0.5} // Stretches the light reflections to look like cinematic anamorphic flares
+            backside={true} // Renders the inside of the glass for double-refraction
+            transparent={true}
+            opacity={1}
+            color="#ffffff"
+            resolution={256} // Reduced from 1024 to massively improve load/render performance
+          />
+        </mesh>
+      </Bvh>
     </Float>
   );
 }
