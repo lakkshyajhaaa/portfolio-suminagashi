@@ -9,9 +9,9 @@ import matter from "gray-matter";
 const components = {
   h1: (props: any) => <h1 className="font-sans text-[3rem] md:text-[5rem] tracking-[-0.05em] font-bold text-white leading-[0.9] mt-12 mb-6" {...props} />,
   h2: (props: any) => <h2 className="font-sans text-[2rem] md:text-[3rem] tracking-[-0.03em] font-bold text-white mt-10 mb-4" {...props} />,
-  p: (props: any) => <p className="font-sans text-lg md:text-xl tracking-wide text-white/80 leading-relaxed font-light mb-6" {...props} />,
-  a: (props: any) => <a className="text-[#ff5500] hover:text-white transition-colors border-b border-[#ff5500]/30 hover:border-white" {...props} />,
-  ul: (props: any) => <ul className="list-disc list-inside mb-6 space-y-2 text-white/80" {...props} />,
+  p: (props: any) => <p className="font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-normal mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,1)]" {...props} />,
+  a: (props: any) => <a className="text-[#ff5500] hover:text-white transition-colors border-b border-[#ff5500]/30 hover:border-white drop-shadow-[0_2px_8px_rgba(0,0,0,1)]" {...props} />,
+  ul: (props: any) => <ul className="list-disc list-inside mb-6 space-y-2 text-white font-normal drop-shadow-[0_4px_12px_rgba(0,0,0,1)]" {...props} />,
   // You can add more components here!
 };
 
@@ -42,13 +42,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <span className="font-sans text-[8px] md:text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase drop-shadow-[0_0_5px_rgba(255,85,0,0.5)] mb-4">
           {project.type} // {project.id}
         </span>
-        <h1 className="font-sans text-[15vw] md:text-[8rem] lg:text-[10rem] tracking-[-0.05em] font-bold text-white leading-[0.8] drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] break-words">
+        <h1 className="font-sans text-[15vw] md:text-[8rem] lg:text-[10rem] tracking-[-0.05em] font-bold text-white leading-[0.8] drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] whitespace-nowrap">
           {project.name}.
         </h1>
       </div>
 
       {/* Project Details (Scrollable below fold) */}
-      <div className="mt-[45vh] md:mt-[60vh] w-full max-w-4xl mx-auto flex flex-col gap-16 pointer-events-auto z-10 mix-blend-difference pb-32 px-6">
+      <div className="mt-[45vh] md:mt-[60vh] w-full max-w-4xl mx-auto flex flex-col gap-16 pointer-events-auto z-10 pb-32 px-6">
         
         {/* Specs Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/20 pt-8">
