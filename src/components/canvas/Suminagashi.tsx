@@ -244,16 +244,9 @@ void main() {
   // Apply the shadow by blending the base color towards pure black in the valleys (softened)
   vec3 finalColor = mix(baseColor, vec3(0.02), shadow * 0.35);
   
-  // Fun Interaction: Tactile water displacement
-  float mouseDist = length(p - mouseAspect);
-  float mouseSplash = smoothstep(0.2, 0.0, mouseDist);
-  
-  // The mouse creates a deep depression (shadow) with a bright rim
-  // This makes the cursor feel like a physical stylus dragging through thick paint!
-  finalColor -= mouseSplash * 0.4; 
-  float rim = smoothstep(0.15, 0.1, mouseDist) * smoothstep(0.0, 0.05, mouseDist);
-  vec3 rimColor = mix(vec3(1.0), uColor4, 0.3);
-  finalColor += rimColor * rim * 2.5;
+  // Fun Interaction: "Silent Needle" (Physical fluid displacement only, no visual blob)
+  // The velocity field (advection) handles the actual movement of the ink, 
+  // so we don't need to paint any colors or shadows over the cursor here.
   
   // Clean Cinematic Vignette: Smooth radial fade to black without the cloudy noise
   float distToCenter = distance(st, vec2(0.5) * aspect);
