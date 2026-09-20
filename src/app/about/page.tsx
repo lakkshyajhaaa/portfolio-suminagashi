@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function About() {
   return (
-    <main className="flex min-h-[100dvh] flex-col justify-between px-6 py-24 md:p-24 md:px-32 bg-transparent overflow-x-hidden">
+    <main className="flex min-h-[100dvh] flex-col justify-between px-6 py-24 md:p-24 md:px-32 bg-[#06140b] overflow-x-hidden">
       
       {/* Top Section: Header & Paragraph */}
       <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 pointer-events-auto">
