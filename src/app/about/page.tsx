@@ -14,13 +14,13 @@ export default function About() {
         
         {/* Brutalist Directory Header */}
         <div className="flex flex-col md:col-span-2">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#2d6a4f] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,1)] z-10 animate-fade-in">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,1)] z-10 animate-fade-in">
             PROFILE // ABOUT
           </span>
           <h1 className="font-sans text-[3rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] mix-blend-difference z-10 animate-fade-in">
             ABOUT.
           </h1>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="mt-8 md:mt-12 inline-block font-sans text-[10px] tracking-[0.4em] font-bold text-[#2d6a4f] uppercase border-[1px] border-[#2d6a4f]/50 px-8 py-4 hover:bg-[#2d6a4f] hover:text-black transition-all w-fit drop-shadow-[0_2px_8px_rgba(0,0,0,1)] z-10 animate-fade-in">
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="mt-8 md:mt-12 inline-block font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase border-[1px] border-[#ff5500]/50 px-8 py-4 hover:bg-[#ff5500] hover:text-black transition-all w-fit drop-shadow-[0_2px_8px_rgba(0,0,0,1)] z-10 animate-fade-in">
             DOWNLOAD RESUME ↘
           </a>
         </div>
@@ -40,8 +40,8 @@ export default function About() {
       <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 pointer-events-auto z-10 animate-fade-in mt-16 md:mt-32">
         
         {/* Core Stack */}
-        <div className="flex flex-col border-t-[1px] border-[#1b4332]/50 pt-4">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#2d6a4f] uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+        <div className="flex flex-col border-t-[1px] border-[#ff5500]/50 pt-4">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
             SKILLS //
           </span>
           <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
@@ -53,25 +53,25 @@ export default function About() {
         </div>
 
         {/* Affiliations */}
-        <div className="flex flex-col border-t-[1px] border-[#1b4332]/50 pt-4">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#2d6a4f] uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+        <div className="flex flex-col border-t-[1px] border-[#ff5500]/50 pt-4">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
             EXPERIENCE //
           </span>
           <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
-            <li><span className="text-[#2d6a4f]">SWE INTERN</span> @ COE-FS</li>
-            <li><span className="text-[#2d6a4f]">SWE INTERN</span> @ CTD</li>
-            <li><span className="text-[#2d6a4f]">OS CONTRIB</span> @ LIBRECUBE</li>
+            <li><span className="text-[#ff5500]">SWE INTERN</span> @ COE-FS</li>
+            <li><span className="text-[#ff5500]">SWE INTERN</span> @ CTD</li>
+            <li><span className="text-[#ff5500]">OS CONTRIB</span> @ LIBRECUBE</li>
           </ul>
         </div>
 
         {/* Recognition */}
-        <div className="flex flex-col border-t-[1px] border-[#1b4332]/50 pt-4 col-span-2 md:col-span-1">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#2d6a4f] uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+        <div className="flex flex-col border-t-[1px] border-[#ff5500]/50 pt-4 col-span-2 md:col-span-1">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
             LEADERSHIP //
           </span>
           <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
-            <li><span className="text-[#2d6a4f]">INNOVATOR</span> @ COE-DS&AI</li>
-            <li><span className="text-[#2d6a4f]">SR COORD</span> @ CTD</li>
+            <li><span className="text-[#ff5500]">INNOVATOR</span> @ COE-DS&AI</li>
+            <li><span className="text-[#ff5500]">SR COORD</span> @ CTD</li>
           </ul>
         </div>
 
@@ -82,7 +82,7 @@ export default function About() {
         
         {/* Section 1 */}
         <div className="flex flex-col border-t-[1px] border-white/20 pt-6">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#2d6a4f] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
             01 // HELLO, WORLD.
           </span>
           <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
@@ -98,7 +98,7 @@ export default function About() {
 
         {/* Section 2 */}
         <div className="flex flex-col border-t-[1px] border-white/20 pt-6">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#2d6a4f] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
             02 // HOW I WORK
           </span>
           <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
@@ -112,7 +112,7 @@ export default function About() {
 
         {/* Section 3 */}
         <div className="flex flex-col border-t-[1px] border-white/20 pt-6">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#2d6a4f] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
             03 // WHAT I DO
           </span>
           <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
@@ -126,7 +126,7 @@ export default function About() {
 
         {/* Section 4 */}
         <div className="flex flex-col border-t-[1px] border-white/20 pt-6">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#2d6a4f] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
             04 // PHILOSOPHY
           </span>
           <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
