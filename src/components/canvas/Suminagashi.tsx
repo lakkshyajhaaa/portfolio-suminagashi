@@ -171,8 +171,6 @@ void main() {
   vec2 mouseAspect = uMouse * aspect;
   
   // We scale the mouse velocity for the fish's glide speed
-  vec2 mouseVelocity = uMouseDelta * aspect * 8.0;
-  float mouseSpeed = length(mouseVelocity);
   
   int ADVECTION_STEPS = 6;
   float dt = 0.04; // Time step per integration
@@ -180,34 +178,12 @@ void main() {
   // Backwards advection loop (Optimized for 60fps on laptops)
   for(int i = 0; i < 3; i++) {
      // 1. Natural Ocean Flow Velocity (Optimized Pseudo-Flow Field)
-     // We bypass the extremely expensive curlNoise (6 noise calls) for a cheaper 2D flow (2 noise calls)
      vec2 vel = vec2(
         snoise(vec3(p * 0.8, time * 0.25)),
         snoise(vec3(p * 0.8 + vec2(12.34, 56.78), time * 0.25))
      ) * 0.8;
      
-     // 2. Fish Gliding Model
-     vec2 toMouse = p - mouseAspect;
-     float dist = length(toMouse);
-     
-     // The fish affects a localized area around it
-     // The fish affects a larger, more playful area
-     float inf = smoothstep(0.25, 0.0, dist);
-     
-     // Propulsion: Push water
-     vec2 propVel = mouseVelocity * 0.8;
-     
-     // Lateral push: Displace water outward
-     vec2 outward = dist > 0.001 ? toMouse / dist : vec2(0.0);
-     vec2 lateralVel = outward * mouseSpeed * 0.8;
-     
-     // Wake: Massive playful whirlpools
-     vec2 swirlVel = vec2(-toMouse.y, toMouse.x) * mouseSpeed * 3.0;
-     
-     // Apply the fun disturbance
-     vel += (propVel + lateralVel + swirlVel) * inf;
-     
-     // 3. Move the fluid purely along the velocity vector
+     // 2. Move the fluid purely along the velocity vector
      p += vel * dt;
   }
   
@@ -244,9 +220,13 @@ void main() {
   // Apply the shadow by blending the base color towards pure black in the valleys (softened)
   vec3 finalColor = mix(baseColor, vec3(0.02), shadow * 0.35);
   
-  // Fun Interaction: "Silent Needle" (Physical fluid displacement only, no visual blob)
-  // The velocity field (advection) handles the actual movement of the ink, 
-  // so we don't need to paint any colors or shadows over the cursor here.
+  // Fun Interaction: "Soft Spotlight"
+  // The overall canvas is kept slightly darker, and the cursor acts as a soft wide spotlight
+  float screenDist = length(st * aspect - mouseAspect);
+  float spotlight = smoothstep(0.8, 0.0, screenDist); // Wide soft radius
+  
+  // Dim the rest of the screen to 40% brightness, but keep 100% brightness near the cursor
+  finalColor = mix(finalColor * 0.4, finalColor, spotlight);
   
   // Clean Cinematic Vignette: Smooth radial fade to black without the cloudy noise
   float distToCenter = distance(st, vec2(0.5) * aspect);
