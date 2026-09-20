@@ -222,7 +222,7 @@ void main() {
   
   // Fun Interaction: "Soft Spotlight"
   // The overall canvas is kept slightly darker, and the cursor acts as a soft wide spotlight
-  float screenDist = length(st * aspect - mouseAspect);
+  float screenDist = length(st - mouseAspect);
   float spotlight = smoothstep(0.8, 0.0, screenDist); // Wide soft radius
   
   // Dim the rest of the screen to 40% brightness, but keep 100% brightness near the cursor
