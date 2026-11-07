@@ -153,15 +153,15 @@ export default function LoadingScreen() {
                   </div>
                   <div className="grid grid-cols-[70px_1fr] sm:grid-cols-[80px_1fr] gap-2">
                     <span className="text-gray-400 font-normal">ROLE</span>
-                    <span>: Developer</span>
+                    <span>: Computer Engineer & AI Systems Developer</span>
                   </div>
                   <div className="grid grid-cols-[70px_1fr] sm:grid-cols-[80px_1fr] gap-2">
                     <span className="text-gray-400 font-normal">FIELD</span>
-                    <span>: Interactive / Website / CG</span>
+                    <span>: Intelligent Systems • AI • Developer Tools</span>
                   </div>
                   <div className="grid grid-cols-[70px_1fr] sm:grid-cols-[80px_1fr] gap-2">
-                    <span className="text-gray-400 font-normal">LIKE</span>
-                    <span>: Design</span>
+                    <span className="text-gray-400 font-normal">FOCUS</span>
+                    <span>: Architecture & Intentional Craft</span>
                   </div>
                   <div className="grid grid-cols-[70px_1fr] sm:grid-cols-[80px_1fr] gap-2">
                     <span className="text-gray-400 font-normal">FROM</span>

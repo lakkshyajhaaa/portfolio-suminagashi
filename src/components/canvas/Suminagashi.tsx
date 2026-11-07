@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useEffect } from "react";
+import { useMemo, useRef, useEffect, useState } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { gsap } from "gsap";
@@ -296,6 +296,17 @@ export default function Suminagashi({ isWebGPU, pathname, transitionState }: { i
     []
   );
 
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", listener);
+    return () => mq.removeEventListener("change", listener);
+  }, []);
+
   const { isCameraActive, getHandPosition } = useHandTracking();
 
   // Track global physical mouse position
@@ -331,6 +342,13 @@ export default function Suminagashi({ isWebGPU, pathname, transitionState }: { i
 
   useFrame((state) => {
     if (materialRef.current) {
+      if (prefersReducedMotion) {
+        materialRef.current.uniforms.uTime.value = 8.5;
+        materialRef.current.uniforms.uResolution.value.set(size.width, size.height);
+        materialRef.current.uniforms.uMouse.value.set(0.5, 0.5);
+        materialRef.current.uniforms.uMouseDelta.value.set(0.0, 0.0);
+        return;
+      }
       materialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
       // Continuously sync resolution to handle window resizes properly
       materialRef.current.uniforms.uResolution.value.set(size.width, size.height);
