@@ -85,10 +85,10 @@ export default function Navigation() {
               href={item.href}
               aria-current={isActive ? "page" : undefined}
               onClick={(e) => handleNav(e, item.route as PageRoute, item.href)}
-              className={`min-h-[44px] min-w-[44px] inline-flex items-center justify-center font-sans text-[11px] md:text-xs tracking-[0.35em] font-bold uppercase transition-all duration-500 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] ${opacityClass} ${
+              className={`min-h-[44px] min-w-[44px] inline-flex items-center justify-center font-sans text-xs md:text-[13px] tracking-[0.25em] md:tracking-[0.3em] font-black uppercase transition-all duration-500 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6600] ${opacityClass} ${
                 isActive
-                  ? "text-white underline underline-offset-[8px] decoration-white font-extrabold drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
-                  : "text-[#ff5500] hover:text-white drop-shadow-[0_0_6px_rgba(255,85,0,0.6)]"
+                  ? "text-white underline underline-offset-[8px] decoration-white font-black drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
+                  : "text-[#ff6600] hover:text-white drop-shadow-[0_0_1px_rgba(255,255,255,0.9)] drop-shadow-[0_0_8px_rgba(255,102,0,0.6)]"
               }`}
             >
               {item.label}

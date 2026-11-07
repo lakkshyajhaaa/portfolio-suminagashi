@@ -47,7 +47,7 @@ export default function Work() {
     <main className="flex min-h-screen flex-col justify-start p-6 sm:p-10 md:p-24 bg-transparent overflow-x-hidden">
       {/* Brutalist Directory Header */}
       <header className="absolute top-[80px] left-6 md:top-24 md:left-32 flex flex-col pointer-events-auto z-10 mix-blend-difference">
-        <span className="font-sans text-[10px] md:text-xs tracking-[0.4em] font-bold text-[#ff5500] uppercase drop-shadow-[0_0_8px_rgba(255,85,0,0.6)] animate-fade-in">
+        <span className="font-sans text-xs md:text-sm tracking-[0.25em] md:tracking-[0.3em] font-black text-[#ff6600] uppercase drop-shadow-[0_0_1px_rgba(255,255,255,0.9)] drop-shadow-[0_0_8px_rgba(255,102,0,0.6)] animate-fade-in">
           WORK // SELECTED SYSTEMS
         </span>
         <h1 className="font-sans text-[3rem] sm:text-[4.5rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.85] mt-3 drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)] animate-fade-in">
