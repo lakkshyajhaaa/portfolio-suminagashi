@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-transparent">
-      {/* Brutalist Monolithic Typography (Top Left) */}
-      <div className="absolute top-14 left-6 md:top-2 md:left-32 flex flex-col pointer-events-auto z-10 mix-blend-difference animate-fade-in">
+      {/* Brutalist Monolithic Typography (Top Left) - In-line with top logo & controls */}
+      <div className="absolute top-16 left-6 md:top-8 md:left-32 flex flex-col pointer-events-auto z-10 mix-blend-difference animate-fade-in">
         <h1 className="font-sans text-[11vw] md:text-[8rem] lg:text-[10rem] tracking-[-0.05em] font-bold text-white leading-[0.8] drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]">
           LAKKSHYA
         </h1>
