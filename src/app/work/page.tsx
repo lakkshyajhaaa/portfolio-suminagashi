@@ -26,15 +26,15 @@ export default function Work() {
         </h1>
       </div>
 
-      {/* Massive Project List (Right Aligned) */}
-      <div className="absolute top-[200px] md:top-[120px] right-6 md:right-16 flex flex-col items-end gap-4 md:gap-8 pointer-events-auto z-10 mix-blend-difference animate-fade-in w-full max-w-[90vw] md:max-w-[80vw] pb-32">
+      {/* Scaled Brutalist Project List (Right Aligned) */}
+      <div className="absolute top-[200px] md:top-[120px] right-6 md:right-16 flex flex-col items-end gap-3 md:gap-6 pointer-events-auto z-10 mix-blend-difference animate-fade-in w-full max-w-[90vw] md:max-w-[80vw] pb-32">
         {projects.map((project) => (
-          <Link key={project.id} href={`/work/${project.slug}`} className="flex flex-col items-end group cursor-pointer transition-transform duration-500 hover:-translate-x-2 md:hover:-translate-x-8">
-            <div className="flex flex-col md:flex-row items-end md:items-baseline gap-1 md:gap-8">
-              <span className="font-sans text-[8px] md:text-[10px] tracking-widest text-[#ff5500] font-bold mb-1 md:mb-6 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
+          <Link key={project.id} href={`/work/${project.slug}`} className="flex flex-col items-end group cursor-pointer transition-transform duration-500 hover:-translate-x-2 md:hover:-translate-x-6">
+            <div className="flex flex-col md:flex-row items-end md:items-baseline gap-1 md:gap-6">
+              <span className="font-sans text-[8px] md:text-[10px] tracking-widest text-[#ff5500] font-bold mb-1 md:mb-3 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]">
                 {project.id} // {project.type} // {project.status}
               </span>
-              <h2 className="font-sans text-[8vw] sm:text-[10vw] md:text-[6rem] lg:text-[7.5rem] tracking-[-0.05em] font-bold text-white/90 leading-[0.85] drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] group-hover:text-[#f3e8ff] group-hover:drop-shadow-[0_0_25px_rgba(243,232,255,0.6)] transition-all duration-300 whitespace-nowrap">
+              <h2 className="font-sans text-[6vw] sm:text-[7vw] md:text-[3.25rem] lg:text-[4.25rem] tracking-[-0.05em] font-bold text-white/90 leading-[0.9] drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] group-hover:text-[#f3e8ff] group-hover:drop-shadow-[0_0_25px_rgba(243,232,255,0.6)] transition-all duration-300 whitespace-nowrap">
                 {project.name}
               </h2>
             </div>
