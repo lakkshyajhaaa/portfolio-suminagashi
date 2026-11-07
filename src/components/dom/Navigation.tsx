@@ -10,8 +10,8 @@ import { useHandTracking } from "@/lib/HandTrackingContext";
 
 const navItems = [
   { label: "HOME", route: "home", href: "/" },
-  { label: "WORK", route: "work", href: "/work" },
   { label: "ABOUT", route: "about", href: "/about" },
+  { label: "WORK", route: "work", href: "/work" },
   { label: "CONTACT", route: "contact", href: "/contact" },
 ];
 

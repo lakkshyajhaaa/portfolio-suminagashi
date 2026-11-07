@@ -13,8 +13,8 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: "TOME I: HOME", route: "home", href: "/" },
-  { label: "TOME II: WORK", route: "work", href: "/work" },
-  { label: "TOME III: ABOUT", route: "about", href: "/about" },
+  { label: "TOME II: ABOUT", route: "about", href: "/about" },
+  { label: "TOME III: WORK", route: "work", href: "/work" },
   { label: "TOME IV: CONTACT", route: "contact", href: "/contact" },
 ];
 
