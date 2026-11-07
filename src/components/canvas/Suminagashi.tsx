@@ -168,9 +168,6 @@ void main() {
   // ==========================================
   
   vec2 p = distortedUv * 0.8; // Scale for the size of the ink droplets
-  vec2 mouseAspect = uMouse * aspect;
-  
-  // We scale the mouse velocity for the fish's glide speed
   
   int ADVECTION_STEPS = 6;
   float dt = 0.04; // Time step per integration
@@ -217,26 +214,15 @@ void main() {
      shadow = 0.0; // Completely remove dark zones on the About page
   }
   
-  // Apply the shadow by blending the base color towards pure black in the valleys (softened)
-  vec3 finalColor = mix(baseColor, vec3(0.02), shadow * 0.35);
+  // Soft valley shadows (subtle depth without crushing colors into black)
+  vec3 finalColor = mix(baseColor, vec3(0.03), shadow * 0.22);
   
-  // Fun Interaction: "Soft Spotlight"
-  // The overall canvas is kept slightly darker, and the cursor acts as a soft wide spotlight
-  float screenDist = length(st - mouseAspect);
-  float spotlight = smoothstep(0.8, 0.0, screenDist); // Wide soft radius
-  
-  // Dim the rest of the screen to 40% brightness, but keep 100% brightness near the cursor
-  finalColor = mix(finalColor * 0.4, finalColor, spotlight);
-  
-  // Clean Cinematic Vignette: Smooth radial fade to black without the cloudy noise
-  float distToCenter = distance(st, vec2(0.5) * aspect);
-  float vignette = smoothstep(1.0, 0.3, distToCenter);
-  finalColor = mix(finalColor, finalColor * vignette, 0.8);
+  // Full uniform canvas brightness: 100% luminous glow applied across the entire website by default (cursor spotlight removed)
   
   // Cinematic Film Grain
   float grain = fract(sin(dot(st, vec2(12.9898, 78.233)) + time) * 43758.5453);
   // Add and subtract noise to maintain overall luminosity instead of just darkening
-  finalColor += (grain - 0.5) * 0.06;
+  finalColor += (grain - 0.5) * 0.05;
   
   vec3 color = finalColor;
   
