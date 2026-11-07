@@ -1,29 +1,46 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
 import { useHandTracking } from "@/lib/HandTrackingContext";
 
 export default function InvertedCursorBox() {
-  const mouseX = useMotionValue(-1000);
-  const mouseY = useMotionValue(-1000);
-  const [hasMoved, setHasMoved] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const visibleRef = useRef(false);
   const { isCameraActive, getHandPosition } = useHandTracking();
 
-  // High-performance spring for silky smooth 120fps tracking
-  const springX = useSpring(mouseX, { stiffness: 1400, damping: 50 });
-  const springY = useSpring(mouseY, { stiffness: 1400, damping: 50 });
-
+  // Instant 1:1 hardware cursor tracking without spring lag or frame delay
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-      if (!hasMoved) setHasMoved(true);
+      if (containerRef.current) {
+        containerRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+      }
+      if (!visibleRef.current) {
+        visibleRef.current = true;
+        setIsVisible(true);
+      }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY, hasMoved]);
+    const handleMouseLeave = () => {
+      visibleRef.current = false;
+      setIsVisible(false);
+    };
+
+    const handleMouseEnter = () => {
+      visibleRef.current = true;
+      setIsVisible(true);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseenter", handleMouseEnter);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseenter", handleMouseEnter);
+    };
+  }, []);
 
   // Synchronize with gesture hand tracking if camera is active
   useEffect(() => {
@@ -34,34 +51,41 @@ export default function InvertedCursorBox() {
       if (hand && typeof window !== "undefined") {
         const hX = ((hand.x + 1) / 2) * window.innerWidth;
         const hY = ((-hand.y + 1) / 2) * window.innerHeight;
-        mouseX.set(hX);
-        mouseY.set(hY);
-        if (!hasMoved) setHasMoved(true);
+        if (containerRef.current) {
+          containerRef.current.style.transform = `translate3d(${hX}px, ${hY}px, 0)`;
+        }
+        if (!visibleRef.current) {
+          visibleRef.current = true;
+          setIsVisible(true);
+        }
       }
       animId = requestAnimationFrame(loop);
     };
     animId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(animId);
-  }, [isCameraActive, getHandPosition, mouseX, mouseY, hasMoved]);
+  }, [isCameraActive, getHandPosition]);
 
   return (
-    <motion.div
-      className={`pointer-events-none fixed top-0 left-0 z-40 -translate-x-1/2 -translate-y-1/2 hidden sm:block transition-opacity duration-300 ${
-        hasMoved ? "opacity-100" : "opacity-0"
+    <div
+      ref={containerRef}
+      className={`pointer-events-none fixed top-0 left-0 z-40 hidden sm:block transition-opacity duration-200 ${
+        isVisible ? "opacity-100" : "opacity-0"
       }`}
       style={{
-        x: springX,
-        y: springY,
+        transform: "translate3d(-1000px, -1000px, 0)",
+        willChange: "transform",
       }}
     >
       {/* 
         Strict 3:2 Width:Length (Height) Ratio Box:
         Desktop: 240px width x 160px height (240 / 160 = 1.5 = 3/2)
         Tablet/Small: 180px width x 120px height (180 / 120 = 1.5 = 3/2)
+        The child translates (-50%, -50%) so its geometric center is strictly attached to the cursor!
       */}
       <div
         className="relative w-[180px] h-[120px] md:w-[240px] md:h-[160px] border border-white/70"
         style={{
+          transform: "translate(-50%, -50%)",
           backdropFilter: "invert(100%)",
           WebkitBackdropFilter: "invert(100%)",
         }}
@@ -83,6 +107,6 @@ export default function InvertedCursorBox() {
           3:2 // INV
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
