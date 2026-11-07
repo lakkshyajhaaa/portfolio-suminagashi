@@ -23,14 +23,6 @@ export default function Navigation() {
   const { isCameraActive, toggleCamera, isLoading: isCameraLoading } = useHandTracking();
 
   const [showControlsHelp, setShowControlsHelp] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   useEffect(() => {
     if (state.value === "void" && state.context.targetRoute) {
@@ -105,7 +97,7 @@ export default function Navigation() {
         })}
       </nav>
 
-      {/* Desktop Brutalist HUD Controls */}
+      {/* Desktop Brutalist Controls HUD - High Contrast & Crystal Clear Visibility */}
       <aside
         aria-label="Experience Controls"
         className={`hidden md:flex fixed ${
@@ -116,14 +108,14 @@ export default function Navigation() {
             : pathname === "/about"
             ? "top-8 left-[40%] -translate-x-1/2"
             : "top-8 right-8"
-        } z-50 flex-col font-sans text-[10px] tracking-[0.2em] text-white/70 mix-blend-difference pointer-events-auto border border-white/20 uppercase bg-black/40 backdrop-blur-md transition-all duration-700 shadow-xl`}
+        } z-50 flex-col font-sans text-[10px] tracking-[0.2em] pointer-events-auto border border-white/30 uppercase bg-[#09090b]/95 backdrop-blur-2xl transition-all duration-700 shadow-2xl`}
       >
-        <div className="flex border-b border-white/20 items-center justify-between px-3 py-2 text-white/50 text-[9px]">
-          <span>CONTROLS</span>
+        <div className="flex border-b border-white/20 items-center justify-between px-3.5 py-2 text-white/70 text-[9px] bg-white/5">
+          <span className="font-mono tracking-widest text-white/80">CONTROLS</span>
           <button
             type="button"
             onClick={() => setShowControlsHelp(!showControlsHelp)}
-            className="hover:text-white focus-visible:ring-1 focus-visible:ring-[#ff5500] rounded px-1 transition-colors"
+            className="text-[#67e8f9] hover:text-white focus-visible:ring-1 focus-visible:ring-[#ff5500] rounded px-1 transition-colors font-mono font-bold"
             aria-label="Toggle Controls Help"
             title="What do these controls do?"
           >
@@ -132,63 +124,87 @@ export default function Navigation() {
         </div>
 
         {showControlsHelp && (
-          <div className="p-3 border-b border-white/20 max-w-xs text-[9px] lowercase tracking-normal text-white/90 normal-case bg-black/80 leading-relaxed font-sans">
-            <p className="mb-1.5">
-              <strong className="text-[#67e8f9] uppercase tracking-wider">Gesture Mode:</strong> Webcam-driven interaction. Point with your index finger to glide cursor, pinch to click, and hover near edges to scroll.
+          <div className="p-4 border-b border-white/20 max-w-xs text-xs text-white/95 normal-case bg-[#111116] leading-relaxed font-sans shadow-inner">
+            <p className="mb-2">
+              <strong className="text-[#ff5500] uppercase tracking-wider font-bold">Gesture Mode:</strong> Webcam-driven interaction. Point your index finger to glide cursor, pinch to click, and hover near edges to scroll.
             </p>
             <p>
-              <strong className="text-[#67e8f9] uppercase tracking-wider">Soundscape:</strong> Calming ambient vinyl soundscape with generative texture. OFF by default.
+              <strong className="text-[#67e8f9] uppercase tracking-wider font-bold">Soundscape:</strong> Calming ambient vinyl soundscape with generative texture. OFF by default.
             </p>
           </div>
         )}
 
         <div className="flex">
+          {/* GESTURE TOGGLE BUTTON */}
           <button
             type="button"
             onClick={toggleCamera}
             role="switch"
             aria-checked={isCameraActive}
             aria-label="Toggle Webcam Gesture Control"
-            className={`p-3 md:p-3.5 w-36 border-r border-white/20 text-left transition-colors flex items-center justify-between focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff5500] ${
-              isCameraActive ? "bg-white text-black font-bold" : "hover:bg-white/10 text-white"
+            className={`p-3.5 w-36 border-r border-white/20 text-left transition-all flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] ${
+              isCameraActive
+                ? "bg-[#ff5500] text-black font-extrabold shadow-[0_0_15px_rgba(255,85,0,0.6)]"
+                : "bg-transparent hover:bg-white/10 text-white"
             }`}
           >
-            <span>GESTURE</span>
-            <span className="font-mono text-[9px]">
-              {isCameraLoading ? "..." : isCameraActive ? "ON" : "OFF"}
+            <span className="font-bold text-xs tracking-wider">GESTURE</span>
+            <span
+              className={`font-mono text-[9px] px-1.5 py-0.5 rounded font-bold ${
+                isCameraLoading
+                  ? "text-[#67e8f9] animate-pulse"
+                  : isCameraActive
+                  ? "bg-black text-[#ff5500] font-black"
+                  : "text-[#ff5500] border border-[#ff5500]/40 bg-[#ff5500]/10"
+              }`}
+            >
+              {isCameraLoading ? "INIT..." : isCameraActive ? "ON" : "OFF"}
             </span>
           </button>
 
+          {/* AUDIO TOGGLE BUTTON */}
           <button
             type="button"
             onClick={() => setIsMuted(!isMuted)}
             role="switch"
             aria-checked={!isMuted}
             aria-label="Toggle Ambient Soundscape Audio"
-            className={`p-3 md:p-3.5 w-36 text-left transition-colors flex items-center justify-between focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#ff5500] ${
-              !isMuted ? "bg-white text-black font-bold" : "hover:bg-white/10 text-white"
+            className={`p-3.5 w-36 text-left transition-all flex items-center justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] ${
+              !isMuted
+                ? "bg-white text-black font-extrabold shadow-[0_0_15px_rgba(255,255,255,0.6)]"
+                : "bg-transparent hover:bg-white/10 text-white"
             }`}
           >
-            <span>AUDIO</span>
-            <span className="font-mono text-[9px]">{isMuted ? "OFF" : "ON"}</span>
+            <span className="font-bold text-xs tracking-wider">AUDIO</span>
+            <span
+              className={`font-mono text-[9px] px-1.5 py-0.5 rounded font-bold ${
+                !isMuted
+                  ? "bg-black text-white font-black"
+                  : "text-white/60 border border-white/20 bg-white/5"
+              }`}
+            >
+              {isMuted ? "OFF" : "ON"}
+            </span>
           </button>
         </div>
       </aside>
 
       {/* Mobile Audio Quick Toggle */}
-      <div className="md:hidden fixed top-6 right-6 z-50 pointer-events-auto mix-blend-difference">
+      <div className="md:hidden fixed top-6 right-6 z-50 pointer-events-auto">
         <button
           type="button"
           onClick={() => setIsMuted(!isMuted)}
           role="switch"
           aria-checked={!isMuted}
           aria-label="Toggle Ambient Audio"
-          className={`flex items-center gap-1.5 px-3 py-1.5 border border-white/25 rounded-full text-[9px] tracking-widest uppercase font-mono bg-black/50 backdrop-blur-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] ${
-            !isMuted ? "bg-white text-black font-bold border-white" : "text-white"
+          className={`flex items-center gap-1.5 px-3 py-1.5 border border-white/30 rounded-full text-[9px] tracking-widest uppercase font-mono bg-[#09090b]/95 backdrop-blur-xl text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] shadow-xl ${
+            !isMuted ? "bg-white text-black font-bold border-white" : ""
           }`}
         >
           <span>AUDIO:</span>
-          <span>{isMuted ? "OFF" : "ON"}</span>
+          <span className={!isMuted ? "text-black font-bold" : "text-[#ff5500] font-bold"}>
+            {isMuted ? "OFF" : "ON"}
+          </span>
         </button>
       </div>
 
@@ -215,7 +231,7 @@ export default function Navigation() {
         </Link>
       </div>
 
-      {/* Top/Bottom Copyright Brand Badge */}
+      {/* Bottom Copyright Brand Badge */}
       <div className="fixed bottom-20 right-6 md:bottom-8 md:right-16 z-40 mix-blend-difference pointer-events-none font-sans text-[8px] md:text-[10px] tracking-widest text-white/40 text-right uppercase">
         © LAKKSHYA JHA
       </div>

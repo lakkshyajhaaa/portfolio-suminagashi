@@ -12,6 +12,7 @@ import { TransitionProvider } from "@/lib/TransitionContext";
 import { HandTrackingProvider } from "@/lib/HandTrackingContext";
 import Navigation from "@/components/dom/Navigation";
 import HandCursor from "@/components/dom/HandCursor";
+import InvertedCursorBox from "@/components/dom/InvertedCursorBox";
 import LoadingScreen from "@/components/dom/LoadingScreen";
 
 export const metadata: Metadata = {
@@ -35,6 +36,7 @@ export default function RootLayout({
             <Scene />
             <Navigation />
             <HandCursor />
+            <InvertedCursorBox />
             {children}
             <LoadingScreen />
           </TransitionProvider>

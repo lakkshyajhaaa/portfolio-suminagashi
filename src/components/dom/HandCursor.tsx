@@ -50,7 +50,6 @@ export default function HandCursor() {
       cursorX.set(((hand.x + 1) / 2) * windowSize.width);
       cursorY.set(((-hand.y + 1) / 2) * windowSize.height);
       
-      // Handle Virtual Hover Effects (60fps DOM Probing)
       const pX = ((hand.x + 1) / 2) * windowSize.width;
       const pY = ((-hand.y + 1) / 2) * windowSize.height;
       
@@ -164,8 +163,8 @@ export default function HandCursor() {
 
   if (isLoading) {
     return (
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center border border-white/20 p-4 bg-black/75 backdrop-blur-md shadow-2xl">
-        <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase animate-pulse">
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center border border-white/30 p-4 bg-[#09090b]/95 backdrop-blur-2xl shadow-2xl rounded">
+        <span className="font-sans text-[11px] tracking-[0.3em] font-bold text-[#ff5500] uppercase animate-pulse">
           GESTURE CTL // INITIALIZING WEBCAM PIPELINE...
         </span>
       </div>
@@ -174,15 +173,16 @@ export default function HandCursor() {
 
   return (
     <>
-      {/* Accessible Floating Exit Indicator */}
-      <div className="fixed top-4 right-4 z-[99] pointer-events-auto mix-blend-difference">
+      {/* High-Contrast Accessible Exit Button */}
+      <div className="fixed top-4 right-4 z-[99] pointer-events-auto">
         <button
           type="button"
           onClick={toggleCamera}
-          className="px-3 py-1.5 border border-white/40 bg-black/80 text-white font-mono text-[9px] tracking-widest uppercase hover:bg-white hover:text-black transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] rounded shadow-lg"
+          className="px-3.5 py-2 border border-white/40 bg-[#09090b]/95 text-white font-mono text-[10px] tracking-widest uppercase hover:bg-white hover:text-black transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] rounded shadow-2xl flex items-center gap-2"
           title="Turn off gesture mode"
         >
-          Exit Gesture Mode [ESC]
+          <span className="w-2 h-2 rounded-full bg-[#ff5500] animate-ping" />
+          <span>Exit Gesture Mode [ESC]</span>
         </button>
       </div>
 
@@ -190,16 +190,16 @@ export default function HandCursor() {
       <AnimatePresence>
         {showGuide && (
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center text-center mix-blend-difference pointer-events-none bg-black/20 backdrop-blur-md"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.05 }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center text-center pointer-events-none bg-black/80 backdrop-blur-lg"
           >
-            <span className="font-sans text-[20px] md:text-[36px] tracking-[0.5em] font-bold text-[#ff5500] uppercase mb-6 drop-shadow-[0_0_15px_rgba(255,85,0,0.5)]">
+            <span className="font-sans text-[22px] md:text-[36px] tracking-[0.5em] font-bold text-[#ff5500] uppercase mb-6 drop-shadow-[0_0_15px_rgba(255,85,0,0.6)]">
               GESTURE MODE ACTIVE //
             </span>
-            <div className="flex gap-4 md:gap-8 font-sans text-[10px] md:text-xs tracking-[0.3em] font-bold text-white uppercase drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+            <div className="flex gap-4 md:gap-8 font-sans text-xs md:text-sm tracking-[0.3em] font-bold text-white uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]">
               <span>[ Point to move ]</span>
               <span className="text-[#67e8f9]">✦</span>
               <span>[ Pinch to click ]</span>

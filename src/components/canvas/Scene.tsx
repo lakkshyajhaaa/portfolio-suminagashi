@@ -41,15 +41,15 @@ export default function Scene() {
           {/* The Suminagashi physics engine runs continuously across all routes */}
           <Suminagashi isWebGPU={false} pathname={pathname} transitionState={state.value} />
           
-          {/* Cinematic lighting to illuminate the glass */}
-          <ambientLight intensity={1.5} />
-          <directionalLight position={[10, 10, 5]} intensity={3} color="#ffffff" />
-          <directionalLight position={[-10, -10, -5]} intensity={1} color="#67e8f9" />
+          {/* Radiant lighting to illuminate the canvas and glass prism */}
+          <ambientLight intensity={2.5} />
+          <directionalLight position={[10, 10, 5]} intensity={4.0} color="#ffffff" />
+          <directionalLight position={[-10, -10, -5]} intensity={2.0} color="#67e8f9" />
           
           {/* HDRI Environment map gives the dark side of the glass beautiful, smooth reflections and specs of color */}
           {!isMobile && <Environment preset="city" />}
           
-          {/* The new Invisible Cinematic 3D Element */}
+          {/* The Invisible Cinematic 3D Prism Element */}
           {!isMobile && <RefractionLens />}
         </Suspense>
       </Canvas>
