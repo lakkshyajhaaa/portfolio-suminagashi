@@ -26,18 +26,18 @@ export default function Home() {
           building with clarity, intent &amp; love
         </span>
 
-        {/* The Two Action Buttons */}
-        <div className="flex flex-wrap items-center gap-4 ml-2 mt-6">
+        {/* The Two Action Buttons - Underline / bottom-border style (no border above text) */}
+        <div className="flex flex-wrap items-center gap-6 sm:gap-8 ml-2 mt-6">
           <Link
             href="/work"
-            className="group inline-flex items-center gap-2 font-sans text-xs tracking-[0.25em] font-bold uppercase text-white hover:text-black border border-white px-5 py-2.5 hover:bg-white transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500]"
+            className="group inline-flex items-center gap-2 font-sans text-xs tracking-[0.25em] font-bold uppercase text-white hover:text-[#ff5500] border-b-2 border-white hover:border-[#ff5500] pb-1 transition-all duration-300 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500]"
           >
             <span>View Selected Work</span>
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
+            <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 font-sans text-xs tracking-[0.25em] font-bold uppercase text-white/80 hover:text-white border border-white/40 hover:border-white px-5 py-2.5 transition-all duration-300 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500]"
+            className="inline-flex items-center gap-2 font-sans text-xs tracking-[0.25em] font-bold uppercase text-white/70 hover:text-white border-b border-white/40 hover:border-white pb-1 transition-all duration-300 drop-shadow-[0_0_10px_rgba(255,255,255,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500]"
           >
             <span>Contact Me</span>
           </Link>
