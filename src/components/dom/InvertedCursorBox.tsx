@@ -60,7 +60,7 @@ export default function InvertedCursorBox() {
         Tablet/Small: 180px width x 120px height (180 / 120 = 1.5 = 3/2)
       */}
       <div
-        className="relative w-[180px] h-[120px] md:w-[240px] md:h-[160px] border border-white/70 shadow-[0_0_25px_rgba(255,255,255,0.25)]"
+        className="relative w-[180px] h-[120px] md:w-[240px] md:h-[160px] border border-white/70"
         style={{
           backdropFilter: "invert(100%)",
           WebkitBackdropFilter: "invert(100%)",
