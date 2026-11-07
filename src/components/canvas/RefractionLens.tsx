@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { MeshTransmissionMaterial, Float } from "@react-three/drei";
 import * as THREE from "three";
@@ -11,27 +11,9 @@ export default function RefractionLens() {
   const meshRef = useRef<THREE.Mesh>(null);
   const pathname = usePathname();
   const { getHandPosition } = useHandTracking();
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mq.matches);
-    const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
-    mq.addEventListener("change", listener);
-    return () => mq.removeEventListener("change", listener);
-  }, []);
-
 
   useFrame((state, delta) => {
     if (!meshRef.current) return;
-
-    if (prefersReducedMotion) {
-      meshRef.current.rotation.x = 0.5;
-      meshRef.current.rotation.y = 0.8;
-      meshRef.current.position.x = 4;
-      return;
-    }
 
     // Base rotation (slow, cinematic drift)
     meshRef.current.rotation.x += delta * 0.1;
