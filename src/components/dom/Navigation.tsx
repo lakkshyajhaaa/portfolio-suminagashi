@@ -87,8 +87,8 @@ export default function Navigation() {
               onClick={(e) => handleNav(e, item.route as PageRoute, item.href)}
               className={`min-h-[44px] min-w-[44px] inline-flex items-center justify-center font-sans text-xs md:text-[13px] tracking-[0.25em] md:tracking-[0.3em] font-black uppercase transition-all duration-500 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6600] ${opacityClass} ${
                 isActive
-                  ? "text-white underline underline-offset-[8px] decoration-white font-black drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
-                  : "text-[#ff6600] hover:text-white drop-shadow-[0_0_1px_rgba(255,255,255,0.9)] drop-shadow-[0_0_8px_rgba(255,102,0,0.6)]"
+                  ? "text-white underline underline-offset-[8px] decoration-white font-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
+                  : "text-[#ff6600] hover:text-white drop-shadow-[0_0_1px_rgba(255,255,255,0.9)] drop-shadow-[0_0_8px_rgba(255,102,0,0.6)] drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
               }`}
             >
               {item.label}
@@ -221,7 +221,7 @@ export default function Navigation() {
             viewBox="0 0 24 24"
             fill="white"
             xmlns="http://www.w3.org/2000/svg"
-            className="opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+            className="opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
           >
             {/* L */}
             <path d="M2 2 H6 V14 H14 V18 H2 Z" />
@@ -232,7 +232,7 @@ export default function Navigation() {
       </div>
 
       {/* Bottom Copyright Brand Badge */}
-      <div className="fixed bottom-20 right-6 md:bottom-8 md:right-16 z-40 mix-blend-difference pointer-events-none font-sans text-[8px] md:text-[10px] tracking-widest text-white/40 text-right uppercase">
+      <div className="fixed bottom-20 right-6 md:bottom-8 md:right-16 z-40 mix-blend-difference pointer-events-none font-sans text-[8px] md:text-[10px] tracking-widest text-white/50 text-right uppercase drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
         © LAKKSHYA JHA
       </div>
     </>

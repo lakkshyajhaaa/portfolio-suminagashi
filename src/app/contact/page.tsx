@@ -19,10 +19,10 @@ export default function Contact() {
     <main className="flex min-h-[100dvh] flex-col justify-between px-6 py-24 sm:px-10 md:p-24 md:px-32 bg-transparent overflow-x-hidden">
       {/* Top Section: Header */}
       <header className="flex flex-col w-full pointer-events-auto">
-        <span className="font-sans text-[10px] md:text-xs tracking-[0.4em] font-bold text-[#ff5500] uppercase drop-shadow-[0_0_8px_rgba(255,85,0,0.6)] z-10 animate-fade-in">
+        <span className="font-sans text-[10px] md:text-xs tracking-[0.4em] font-bold text-[#ff6600] uppercase drop-shadow-[0_0_1px_rgba(255,255,255,0.9)] drop-shadow-[0_0_8px_rgba(255,102,0,0.6)] drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] z-10 animate-fade-in">
           COMMUNICATION // DIRECT DISPATCH
         </span>
-        <h1 className="font-sans text-[3.5rem] sm:text-[4.5rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-3 drop-shadow-[0_2px_20px_rgba(0,0,0,0.95)] mix-blend-difference z-10 animate-fade-in">
+        <h1 className="font-sans text-[3.5rem] sm:text-[4.5rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-3 drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)] drop-shadow-[0_0_25px_rgba(255,255,255,0.4)] mix-blend-difference z-10 animate-fade-in">
           CONTACT.
         </h1>
         <p className="font-sans text-xs sm:text-sm text-white/70 max-w-sm mt-3 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
