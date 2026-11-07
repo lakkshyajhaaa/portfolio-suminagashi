@@ -68,7 +68,7 @@ export default function Navigation() {
       {/* Primary Navigation Spine (Vertical on Desktop, Bottom Dock on Mobile) */}
       <nav
         aria-label="Main Navigation"
-        className="fixed bottom-4 left-1/2 -translate-x-1/2 flex-row w-[92vw] max-w-sm justify-around bg-black/60 backdrop-blur-lg border border-white/15 px-3 py-1.5 rounded-full md:rounded-none md:bg-transparent md:backdrop-blur-none md:border-none md:p-0 md:left-8 md:top-1/2 md:-translate-y-1/2 md:-translate-x-0 md:bottom-auto md:w-auto md:gap-20 z-50 flex mix-blend-difference pointer-events-auto [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl] rotate-0 md:rotate-180"
+        className="fixed bottom-4 left-1/2 -translate-x-1/2 flex-row w-[92vw] max-w-sm justify-around bg-[#09090b]/90 backdrop-blur-xl border border-white/20 px-3 py-1.5 rounded-full md:rounded-full md:bg-[#09090b]/90 md:backdrop-blur-2xl md:border md:border-white/25 md:p-4 md:left-8 md:top-1/2 md:-translate-y-1/2 md:-translate-x-0 md:bottom-auto md:w-auto md:gap-14 z-50 flex pointer-events-auto [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl] rotate-0 md:rotate-180 shadow-2xl"
       >
         {navItems.map((item) => {
           const isActive = pathname === item.href || (item.href === "/work" && pathname.startsWith("/work/"));
@@ -87,8 +87,8 @@ export default function Navigation() {
               onClick={(e) => handleNav(e, item.route as PageRoute, item.href)}
               className={`min-h-[44px] min-w-[44px] inline-flex items-center justify-center font-sans text-[11px] md:text-xs tracking-[0.35em] font-bold uppercase transition-all duration-500 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] ${opacityClass} ${
                 isActive
-                  ? "text-white underline underline-offset-[8px] decoration-white font-extrabold drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
-                  : "text-[#ff5500] hover:text-white drop-shadow-[0_0_6px_rgba(255,85,0,0.6)]"
+                  ? "text-white underline underline-offset-[8px] decoration-[#ff5500] font-black drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
+                  : "text-[#ff5500] hover:text-white transition-colors drop-shadow-[0_0_8px_rgba(255,85,0,0.5)]"
               }`}
             >
               {item.label}
@@ -232,7 +232,7 @@ export default function Navigation() {
       </div>
 
       {/* Bottom Copyright Brand Badge */}
-      <div className="fixed bottom-20 right-6 md:bottom-8 md:right-16 z-40 mix-blend-difference pointer-events-none font-sans text-[8px] md:text-[10px] tracking-widest text-white/40 text-right uppercase">
+      <div className="fixed bottom-20 right-6 md:bottom-8 md:right-16 z-40 pointer-events-none font-mono text-[8px] md:text-[9px] tracking-widest text-white/70 text-right uppercase bg-[#09090b]/85 backdrop-blur-md px-2.5 py-1 rounded border border-white/15 shadow-xl">
         © LAKKSHYA JHA
       </div>
     </>
