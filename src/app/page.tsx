@@ -24,23 +24,23 @@ export default function Home() {
           LAKKSHYA
         </h1>
 
-        {/* Supporting Tagline: Pure typography without background box, high-contrast white with deep shadow */}
-        <span className="font-sans text-[10px] md:text-xs tracking-[0.35em] font-bold text-white uppercase ml-2 mt-4 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_12px_rgba(0,0,0,0.95)]">
+        {/* Supporting Tagline: Vibrant high-contrast #ff5500 orange with deep shadows for crystal clear visibility */}
+        <span className="font-sans text-[11px] md:text-xs tracking-[0.35em] font-extrabold text-[#ff5500] uppercase ml-2 mt-4 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_10px_rgba(0,0,0,0.95)]">
           building with clarity, intent &amp; love
         </span>
 
-        {/* The Two Action Buttons: Clean underline style without box background */}
+        {/* The Two Action Buttons: Clean underline style with high-contrast orange accent */}
         <div className="flex flex-wrap items-center gap-6 sm:gap-8 ml-2 mt-6">
           <Link
             href="/work"
-            className="group inline-flex items-center gap-2 font-sans text-xs md:text-sm tracking-[0.25em] font-bold uppercase text-white hover:text-[#ff5500] border-b-2 border-white hover:border-[#ff5500] pb-1 transition-all duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_12px_rgba(0,0,0,0.9)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500]"
+            className="group inline-flex items-center gap-2 font-sans text-xs md:text-sm tracking-[0.25em] font-bold uppercase text-white hover:text-[#ff5500] border-b-2 border-[#ff5500] pb-1 transition-all duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_12px_rgba(0,0,0,0.9)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500]"
           >
             <span>View Selected Work</span>
-            <span className="group-hover:translate-x-1.5 transition-transform duration-300">→</span>
+            <span className="text-[#ff5500] group-hover:translate-x-1.5 transition-transform duration-300">→</span>
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 font-sans text-xs md:text-sm tracking-[0.25em] font-bold uppercase text-white/80 hover:text-white border-b border-white/50 hover:border-white pb-1 transition-all duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_10px_rgba(0,0,0,0.9)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500]"
+            className="inline-flex items-center gap-2 font-sans text-xs md:text-sm tracking-[0.25em] font-bold uppercase text-white/90 hover:text-[#ff5500] border-b border-white/60 hover:border-[#ff5500] pb-1 transition-all duration-300 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_10px_rgba(0,0,0,0.9)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500]"
           >
             <span>Contact Me</span>
           </Link>
@@ -49,13 +49,13 @@ export default function Home() {
 
       {/* Brutalist Monolithic Typography (Bottom Right) */}
       <div className="absolute bottom-[100px] right-6 md:bottom-24 md:right-16 flex flex-col items-end pointer-events-auto z-10 animate-fade-in">
-        {/* Status: Pure typography without background box */}
-        <div className="flex items-center gap-2 mr-2 mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_10px_rgba(0,0,0,0.9)]">
+        {/* Status: Vibrant high-contrast #ff5500 orange with deep shadows */}
+        <div className="flex items-center gap-2 mr-2 mb-4 drop-shadow-[0_2px_4px_rgba(0,0,0,1)] drop-shadow-[0_0_10px_rgba(0,0,0,0.95)]">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff5500] opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff5500]" />
           </span>
-          <span className="font-mono text-[10px] md:text-[11px] tracking-[0.35em] font-bold text-white uppercase">
+          <span className="font-mono text-[10px] md:text-[11px] tracking-[0.35em] font-bold text-[#ff5500] uppercase">
             Status // Active
           </span>
         </div>
