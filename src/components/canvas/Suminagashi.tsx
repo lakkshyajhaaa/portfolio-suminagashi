@@ -218,22 +218,22 @@ void main() {
   }
   
   // Soft valley shadows (subtle depth without crushing the colors into black)
-  vec3 finalColor = mix(baseColor, vec3(0.04), shadow * 0.22);
+  vec3 finalColor = mix(baseColor, vec3(0.02), shadow * 0.35);
   
   // Luminous Canvas Brightness: Keep the whole page glowing, bright, and vibrant
   float screenDist = length(st - mouseAspect);
-  float spotlight = smoothstep(0.9, 0.0, screenDist);
+  float spotlight = smoothstep(0.8, 0.0, screenDist);
   
   // High-ambient brightness: base at 95% full brightness, lifting up to 135% near cursor
-  finalColor = mix(finalColor * 0.90, finalColor * 1.15, spotlight);
+  finalColor = mix(finalColor * 0.55, finalColor, spotlight);
   
   // Gentle Vignette: subtle framing without dark edges
   float distToCenter = distance(st, vec2(0.5) * aspect);
-  float vignette = smoothstep(1.3, 0.4, distToCenter);
-  finalColor = mix(finalColor, finalColor * vignette, 0.35);
+  float vignette = smoothstep(1.1, 0.3, distToCenter);
+  finalColor = mix(finalColor, finalColor * vignette, 0.65);
   
   // Boost overall vibrancy and luminosity
-  finalColor *= 1.05;
+
   
   // Cinematic Film Grain
   float grain = fract(sin(dot(st, vec2(12.9898, 78.233)) + time) * 43758.5453);
