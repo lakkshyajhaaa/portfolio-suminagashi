@@ -217,15 +217,26 @@ void main() {
      shadow = 0.0; // Completely remove dark zones on the About page
   }
   
-  // Soft valley shadows (subtle depth without crushing the colors into black)
-  vec3 finalColor = mix(baseColor, vec3(0.05), shadow * 0.2);
+  // Apply the shadow by blending the base color towards pure black in the valleys (softened)
+  vec3 finalColor = mix(baseColor, vec3(0.02), shadow * 0.35);
   
-  // Full uniform canvas brightness: full brightness applied across the whole page by default (no cursor spotlight glow)
+  // Fun Interaction: "Soft Spotlight"
+  // The overall canvas is kept slightly darker, and the cursor acts as a soft wide spotlight
+  float screenDist = length(st - mouseAspect);
+  float spotlight = smoothstep(0.8, 0.0, screenDist); // Wide soft radius
+  
+  // Dim the rest of the screen to 40% brightness, but keep 100% brightness near the cursor
+  finalColor = mix(finalColor * 0.4, finalColor, spotlight);
+  
+  // Clean Cinematic Vignette: Smooth radial fade to black without the cloudy noise
+  float distToCenter = distance(st, vec2(0.5) * aspect);
+  float vignette = smoothstep(1.0, 0.3, distToCenter);
+  finalColor = mix(finalColor, finalColor * vignette, 0.8);
   
   // Cinematic Film Grain
   float grain = fract(sin(dot(st, vec2(12.9898, 78.233)) + time) * 43758.5453);
   // Add and subtract noise to maintain overall luminosity instead of just darkening
-  finalColor += (grain - 0.5) * 0.05;
+  finalColor += (grain - 0.5) * 0.06;
   
   vec3 color = finalColor;
   

@@ -1,98 +1,15 @@
 ---
-id: "04"
+id: "05"
 slug: "tunnet"
 name: "TUNNET"
-subtitle: "Parametric Music Discovery and Stem Modification Engine"
 type: "WEB APPLICATION"
-category: "Audio / Full-Stack / Product"
-status: "IN DEVELOPMENT"
-role: "Lead Developer & Designer"
-timeline: "2024 - Present"
-teamSize: "Individual Project"
-techStack: ["React", "TypeScript", "Vite", "Web Audio API", "TailwindCSS"]
-liveUrl: ""
-githubUrl: "https://github.com/lakkshyajhaaa"
-description: "Interactive music discovery system enabling listeners to parametrically adjust acoustic traits and instrument prominence to discover new tracks matching custom musical profiles."
+status: "UNDER DEVELOPMENT"
+role: "Developer"
+techStack: ["React", "TypeScript", "Vite"]
 ---
 
-## Overview
+Tunnet is an innovative music discovery platform that allows you to find customizable songs based on your specific musical preferences. 
 
-Mainstream music streaming platforms rely heavily on collaborative filtering: algorithms recommend songs because "users who listened to Track X also listened to Track Y." While effective for popular listening habits, this creates acoustic echo chambers and provides zero user agency over musical composition.
+Let's suppose you like a specific track, **Song A**, but you want it to have a heavier guitar presence. With Tunnet, you can edit the guitar parameter to be more prominent, and the platform will search for and suggest songs that are closest to **Song A**—but with the exact modifications you requested, like more guitar. 
 
-**Tunnet** explores an alternative paradigm: **parametric music discovery**. If a user loves a song's chord structure but wants a rendition with heavier guitar presence, lower tempo, or warmer acoustic instrumentation, Tunnet allows them to tune those parameters directly, searching musical feature space to surface songs that match their exact acoustic preferences.
-
----
-
-## 01. The Problem
-
-1. **The "Black-Box" Recommendation Trap:** Listeners cannot communicate granular musical nuances to streaming algorithms. You cannot tell an algorithm: *"Find me songs that sound like this indie-rock track, but with stronger basslines and zero synthesizers."*
-2. **Coarse Genre Categorization:** Traditional tags (e.g., "Rock", "Electronic") obscure the multidimensional continuous spectrum of musical attributes.
-3. **Passive Consumption vs. Active Exploration:** Most music discovery interfaces are passive carousels that don't invite creative listener experimentation.
-
-### Who Experiences This Problem?
-Music enthusiasts, producers, sound designers, and curious listeners looking for specific sonic characteristics across unfamiliar artists and genres.
-
----
-
-## 02. My Contribution
-
-I am the sole designer and engineer driving Tunnet from initial concept through active implementation:
-
-- **Conceptual & Interaction Design:** Conceived the parametric exploration interface, designing fluid tactile sliders and interactive audio visualizers in Figma.
-- **Frontend Architecture:** Built the client using React, TypeScript, and Vite for fast iterative prototyping.
-- **Audio Pipeline Prototyping:** Utilized the browser Web Audio API for audio waveform visualization, volume normalization, and preview playback.
-- **Multi-Attribute Search Formulation:** Structured the mathematical feature weighting vector mapping traits such as tempo, instrumental balance, and timbre.
-
----
-
-## 03. System Architecture
-
-```text
-[Seed Track Selection]
-   │ (Extract baseline acoustic vector)
-   ▼
-[Parametric Modifier Interface]
-   │ User adjusts: Guitar Weight, Bass Presence, Tempo, Energy
-   ▼
-[Dynamic Vector Calculation]
-   │ v_target = v_seed + Δ_user
-   ▼
-[Feature Distance Engine]
-   │ Computes cosine / Euclidean distance in normalized feature space
-   ▼
-[Ranked Acoustic Match Candidates]
-   │ Real-time preview snippet playback
-   ▼
-[Curated User Playlist Generation]
-```
-
----
-
-## 04. Engineering Challenges & Trade-offs
-
-### Challenge 1: Multi-Parametric Interface Usability
-- **Constraint:** Exposing 10+ acoustic variables simultaneously overwhelms non-technical listeners and creates visual clutter.
-- **Alternative Considered:** Hidden advanced settings dropdowns. This made the core feature invisible to casual users.
-- **Selected Approach:** Designed a radial coordinate system combined with three primary macro-sliders (Acoustic Texture, Harmonic Density, Rhythmic Drive) that expand into granular stem adjustments on demand.
-
-### Challenge 2: Client-Side Audio Preview Latency
-- **Constraint:** Instant feedback is crucial when tweaking sliders; waiting seconds for audio buffer decoding breaks the tactile illusion.
-- **Selected Approach:** Leveraged Web Audio API `AudioContext` with pre-cached audio preview buffers, allowing immediate crossfading between candidate matches.
-
----
-
-## 05. Validation & Current Status
-
-- **Development Stage:** Prototype under active development.
-- **Interface Evaluation:** Completed initial heuristic testing with 15 music listeners to validate whether parametric adjustment felt intuitive and rewarding.
-- **Measured Outcomes:**
-  - Prototype interaction cycle: Users spent an average of 4.2 minutes actively manipulating sliders and auditioning variations.
-  - Heuristic score: 85% of test participants reported discovering songs they would not have encountered through standard streaming carousels.
-
----
-
-## 06. Future Improvements
-
-- **Streaming API Integration:** Integrate Spotify Web API and Apple Music API to allow users to export customized discovered playlists directly into their libraries.
-- **Stem Separation Backend:** Connect with open-source neural audio separation models (e.g., Demucs) to allow dynamic client-side soloing and muting of stems during discovery.
-- **Vector Database Deployment:** Deploy a vector database (e.g., Milvus or Qdrant) indexing millions of acoustic song vectors for sub-50ms similarity queries.
+*(This project is currently under development.)*

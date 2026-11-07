@@ -1,125 +1,77 @@
-"use client";
+import { Metadata } from "next";
 
-import { useState } from "react";
+export const metadata: Metadata = {
+  title: "Contact | Lakkshya Jha",
+  description: "Initiate communication.",
+};
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false);
-  const email = "3127.lakkshyajha@gmail.com";
-
-  const handleCopyEmail = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(email);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 3000);
-    }
-  };
-
   return (
-    <main className="flex min-h-[100dvh] flex-col justify-between px-6 py-24 sm:px-10 md:p-24 md:px-32 bg-transparent overflow-x-hidden">
+    <main className="flex min-h-[100dvh] flex-col justify-between px-6 py-24 md:p-24 md:px-32 bg-transparent">
+      
       {/* Top Section: Header */}
-      <header className="flex flex-col w-full pointer-events-auto">
-        <span className="font-sans text-[10px] md:text-xs tracking-[0.4em] font-bold text-[#ff6600] uppercase drop-shadow-[0_0_1px_rgba(255,255,255,0.9)] drop-shadow-[0_0_8px_rgba(255,102,0,0.6)] drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] z-10 animate-fade-in">
-          COMMUNICATION // DIRECT DISPATCH
+      <div className="flex flex-col w-full pointer-events-auto">
+        <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase drop-shadow-[0_0_5px_rgba(255,85,0,0.5)] z-10 animate-fade-in">
+          SAY HELLO //
         </span>
-        <h1 className="font-sans text-[3.5rem] sm:text-[4.5rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-3 drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)] drop-shadow-[0_0_25px_rgba(255,255,255,0.4)] mix-blend-difference z-10 animate-fade-in">
+        <h1 className="font-sans text-[3rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] mix-blend-difference z-10 animate-fade-in">
           CONTACT.
         </h1>
-        <p className="font-sans text-xs sm:text-sm text-white/70 max-w-sm mt-3 leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-          Available for software engineering roles, technical collaboration, and systems research.
-        </p>
-      </header>
+      </div>
 
-      {/* Center Section: Primary Action Node */}
-      <section aria-label="Direct Email" className="w-full flex-grow flex flex-col justify-center items-center pointer-events-auto z-10 mix-blend-difference animate-fade-in py-16">
-        <div className="flex flex-col items-center">
-          <a
-            href={`mailto:${email}`}
-            className="group relative flex flex-col items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] rounded p-2"
+      {/* Center Section: Massive Interaction Node */}
+      <div className="w-full flex-grow flex flex-col justify-center items-center pointer-events-auto z-10 mix-blend-difference animate-fade-in">
+        <a 
+          href="mailto:3127.lakkshyajha@gmail.com" 
+          className="group relative flex flex-col items-center mt-12 md:mt-32"
+        >
+          {/* Subtle top indicator */}
+          <span className="font-sans text-[10px] tracking-widest text-[#ffe4e6] font-bold uppercase mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 drop-shadow-[0_0_5px_rgba(255,228,230,0.5)] absolute -top-8">
+            SEND EMAIL ↘
+          </span>
+          
+          <h2 className="font-sans text-[9vw] md:text-[8vw] tracking-tighter font-bold text-white whitespace-nowrap drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] group-hover:text-[#ffe4e6] group-hover:drop-shadow-[0_0_30px_rgba(255,228,230,0.6)] transition-all duration-500 scale-y-110 group-hover:scale-y-100 group-hover:scale-x-105">
+            CONNECT ON MAIL
+          </h2>
+          
+          {/* Expanding underline */}
+          <div className="w-0 h-[2px] bg-[#ffe4e6] group-hover:w-full transition-all duration-700 ease-out mt-4 md:mt-6"></div>
+        </a>
+
+        {/* Secondary Social Links integrated below the primary action */}
+        <div className="flex flex-row gap-16 md:gap-32 mt-8 md:mt-10">
+          <a 
+            href="https://github.com/lakkshyajhaaa" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="group relative flex flex-col items-center"
           >
-            {/* Top Indicator */}
-            <span className="font-sans text-[10px] tracking-[0.3em] text-[#67e8f9] font-bold uppercase mb-2 drop-shadow-[0_0_8px_rgba(103,232,249,0.6)]">
-              PRIMARY DISPATCH ↘
+            <span className="font-sans text-[8px] md:text-[10px] tracking-widest text-[#ffe4e6]/50 font-bold uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 absolute -top-6">
+              VIEW REPOS ↘
             </span>
-
-            {/* Massive Email Trigger Title */}
-            <h2 className="font-sans text-[8.5vw] sm:text-[7vw] md:text-[6.5vw] tracking-tight font-bold text-white whitespace-nowrap drop-shadow-[0_2px_25px_rgba(0,0,0,0.9)] group-hover:text-[#ff5500] group-hover:drop-shadow-[0_0_30px_rgba(255,85,0,0.6)] transition-all duration-300">
-              CONNECT ON MAIL
-            </h2>
-
-            {/* Visible Raw Email Address */}
-            <span className="font-mono text-xs sm:text-sm md:text-base text-white/80 group-hover:text-white mt-1 transition-colors">
-              {email}
-            </span>
-
-            {/* Expanding Underline */}
-            <div className="w-12 h-[2px] bg-white/40 group-hover:w-full group-hover:bg-[#ff5500] transition-all duration-500 ease-out mt-3" />
-          </a>
-
-          {/* Quick Copy Email Action */}
-          <button
-            type="button"
-            onClick={handleCopyEmail}
-            className="mt-4 font-mono text-[10px] tracking-widest uppercase text-white/60 hover:text-white border border-white/20 hover:border-white/50 px-4 py-1.5 rounded transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500]"
-          >
-            {copied ? "✓ COPIED TO CLIPBOARD" : "COPY EMAIL ADDRESS"}
-          </button>
-        </div>
-
-        {/* Secondary Verified Channels */}
-        <div className="flex flex-wrap justify-center gap-10 sm:gap-16 md:gap-24 mt-16 sm:mt-20">
-          <a
-            href="https://github.com/lakkshyajhaaa"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] rounded p-2"
-          >
-            <span className="font-sans text-[9px] md:text-[10px] tracking-widest text-white/50 font-bold uppercase mb-1 group-hover:text-[#67e8f9] transition-colors">
-              REPOSITORIES ↗
-            </span>
-            <h3 className="font-sans text-2xl sm:text-3xl md:text-4xl tracking-tight font-bold text-white/80 group-hover:text-white transition-colors">
+            <h3 className="font-sans text-[6vw] md:text-[4vw] tracking-tighter font-bold text-white/70 whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] group-hover:text-[#ffe4e6] group-hover:drop-shadow-[0_0_20px_rgba(255,228,230,0.5)] transition-all duration-500 scale-y-110 group-hover:scale-y-100 group-hover:scale-x-105">
               GITHUB
             </h3>
-            <div className="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300 mt-1" />
+            <div className="w-0 h-[1px] bg-[#ffe4e6]/70 group-hover:w-full transition-all duration-700 ease-out mt-1"></div>
           </a>
 
-          <a
-            href="https://www.linkedin.com/in/lakkshyajha"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] rounded p-2"
+          <a 
+            href="https://linkedin.com/in/lakkshyajha" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="group relative flex flex-col items-center"
           >
-            <span className="font-sans text-[9px] md:text-[10px] tracking-widest text-white/50 font-bold uppercase mb-1 group-hover:text-[#67e8f9] transition-colors">
-              NETWORK ↗
+            <span className="font-sans text-[8px] md:text-[10px] tracking-widest text-[#ffe4e6]/50 font-bold uppercase mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 absolute -top-6">
+              CONNECT ↘
             </span>
-            <h3 className="font-sans text-2xl sm:text-3xl md:text-4xl tracking-tight font-bold text-white/80 group-hover:text-white transition-colors">
+            <h3 className="font-sans text-[6vw] md:text-[4vw] tracking-tighter font-bold text-white/70 whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,255,255,0.1)] group-hover:text-[#ffe4e6] group-hover:drop-shadow-[0_0_20px_rgba(255,228,230,0.5)] transition-all duration-500 scale-y-110 group-hover:scale-y-100 group-hover:scale-x-105">
               LINKEDIN
             </h3>
-            <div className="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300 mt-1" />
-          </a>
-
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] rounded p-2"
-          >
-            <span className="font-sans text-[9px] md:text-[10px] tracking-widest text-white/50 font-bold uppercase mb-1 group-hover:text-[#67e8f9] transition-colors">
-              DOCUMENT ↘
-            </span>
-            <h3 className="font-sans text-2xl sm:text-3xl md:text-4xl tracking-tight font-bold text-white/80 group-hover:text-white transition-colors">
-              RESUME
-            </h3>
-            <div className="w-0 h-[1px] bg-white group-hover:w-full transition-all duration-300 mt-1" />
+            <div className="w-0 h-[1px] bg-[#ffe4e6]/70 group-hover:w-full transition-all duration-700 ease-out mt-1"></div>
           </a>
         </div>
-      </section>
+      </div>
 
-      {/* Bottom Dispatch Availability */}
-      <footer className="w-full flex justify-between items-center text-[10px] tracking-widest text-white/40 uppercase font-mono border-t border-white/10 pt-4">
-        <span>LOCATION: PUNJAB, INDIA</span>
-        <span>TIMEZONE: UTC+05:30</span>
-      </footer>
     </main>
   );
 }

@@ -53,11 +53,11 @@ export default function RefractionLens() {
         <icosahedronGeometry args={[3, 0]} />
         <MeshTransmissionMaterial
           transmission={1} // Full glass transmission
-          thickness={1.0} // Physical thickness of the glass
-          roughness={0.04} // Smooth optical clarity
+          thickness={1.5} // Physical thickness of the glass
+          roughness={0.1} // Increased roughness slightly to catch the specs of color
           ior={1.2} // Index of Refraction
-          chromaticAberration={0.06} // Subtle optical dispersion without harsh rainbow artifacting
-          anisotropy={0.2} // Gentle specular highlights
+          chromaticAberration={0.3} // CRANKED UP: This splits the light into gorgeous rainbow specs!
+          anisotropy={0.5} // Stretches the light reflections to look like cinematic anamorphic flares
           backside={true} // Renders the inside of the glass for double-refraction
           transparent={true}
           opacity={1}

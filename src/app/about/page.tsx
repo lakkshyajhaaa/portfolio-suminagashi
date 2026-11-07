@@ -1,163 +1,145 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About // Engineering Profile | Lakkshya Jha",
-  description:
-    "Computer Engineer building intelligent software, AI systems, and developer tools. Learn about Lakkshya Jha's engineering philosophy, experience, and current research interests.",
+  title: "Profile | Lakkshya Jha",
+  description: "System Architect and Simulation Engineer.",
 };
 
 export default function About() {
   return (
-    <main className="flex min-h-[100dvh] flex-col justify-between px-6 py-24 sm:px-10 md:p-24 md:px-32 bg-transparent overflow-x-hidden">
-      {/* Top Section: Header & Core Architectural Statement */}
-      <section aria-label="About Header" className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 pointer-events-auto">
-        {/* Brutalist Header & Resume CTA */}
+    <main className="flex min-h-[100dvh] flex-col justify-between px-6 py-24 md:p-24 md:px-32 bg-transparent overflow-x-hidden">
+      
+      {/* Top Section: Header & Paragraph */}
+      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 pointer-events-auto">
+        
+        {/* Brutalist Directory Header */}
         <div className="flex flex-col md:col-span-2">
-          <span className="font-sans text-[10px] md:text-xs tracking-[0.4em] font-bold text-[#ff5500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,1)] z-10 animate-fade-in">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,1)] z-10 animate-fade-in">
             PROFILE // ABOUT
           </span>
-          <h1 className="font-sans text-[3.5rem] sm:text-[4.5rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-3 drop-shadow-[0_2px_20px_rgba(0,0,0,0.95)] mix-blend-difference z-10 animate-fade-in">
+          <h1 className="font-sans text-[3rem] md:text-[6rem] tracking-[-0.05em] font-bold text-white leading-[0.8] mt-4 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)] mix-blend-difference z-10 animate-fade-in">
             ABOUT.
           </h1>
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 md:mt-10 inline-flex items-center gap-2 font-sans text-xs tracking-[0.3em] font-bold text-[#ff5500] uppercase border border-[#ff5500]/60 px-6 py-3 hover:bg-[#ff5500] hover:text-black transition-all w-fit drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] z-10 animate-fade-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-          >
-            <span>DOWNLOAD RESUME</span>
-            <span>↘</span>
+          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="mt-8 md:mt-12 inline-block font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase border-[1px] border-[#ff5500]/50 px-8 py-4 hover:bg-[#ff5500] hover:text-black transition-all w-fit drop-shadow-[0_2px_8px_rgba(0,0,0,1)] z-10 animate-fade-in">
+            DOWNLOAD RESUME ↘
           </a>
         </div>
 
-        {/* Primary Architectural Statement */}
+        {/* Main Architectural Statement */}
         <div className="flex flex-col md:col-span-1 md:mt-2 z-10 animate-fade-in">
-          <div className="border-t border-white/20 pt-4 md:pt-6 w-full">
-            <p className="font-sans text-base md:text-lg tracking-wide text-white leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
-              I build reliable, decision-oriented systems. From formulating uncertainty-routing frameworks for AI inference to deploying high-concurrency platforms serving thousands of active university users, I thrive in ambiguity—translating raw requirements into scalable architectures that bridge backend engineering with thoughtful interaction design.
+          <div className="border-t-[1px] border-white/20 pt-4 md:pt-6 w-full">
+            <p className="font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
+              I build data-driven, decision-oriented systems. From architecting risk-scoring frameworks for AI inference to shipping full-stack platforms for thousands of active users. I thrive in ambiguity—translating raw requirements into scalable logic, and bridging the gap between robust backend engineering and seamless product design.
             </p>
           </div>
         </div>
-      </section>
 
-      {/* Technical Summary Grids */}
-      <section aria-label="Technical Core Summary" className="w-full grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 pointer-events-auto z-10 animate-fade-in mt-16 md:mt-24">
+      </div>
+
+      {/* Bottom Section: Technical Grids */}
+      <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-16 pointer-events-auto z-10 animate-fade-in mt-16 md:mt-32">
+        
         {/* Core Stack */}
-        <div className="flex flex-col border-t border-[#ff5500]/50 pt-4">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+        <div className="flex flex-col border-t-[1px] border-[#ff5500]/50 pt-4">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
             SKILLS //
           </span>
-          <ul className="space-y-2 font-sans text-xs md:text-sm font-semibold tracking-wider text-white uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
-            <li>Python • C++ • TypeScript</li>
-            <li>FastAPI • Next.js • React</li>
-            <li>PostgreSQL • Prisma • Docker</li>
-            <li>Machine Learning &amp; Computer Vision</li>
+          <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
+            <li>Python / TS / C++</li>
+            <li>Machine Learning</li>
+            <li>Data Systems</li>
+            <li>Product & Analysis</li>
           </ul>
         </div>
 
-        {/* Selected Experience */}
-        <div className="flex flex-col border-t border-[#ff5500]/50 pt-4">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+        {/* Affiliations */}
+        <div className="flex flex-col border-t-[1px] border-[#ff5500]/50 pt-4">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
             EXPERIENCE //
           </span>
-          <ul className="space-y-2 font-sans text-xs md:text-sm font-semibold tracking-wider text-white uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
-            <li><span className="text-[#ff5500]">SWE INTERN</span> @ CTD (3K+ USERS)</li>
+          <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
             <li><span className="text-[#ff5500]">SWE INTERN</span> @ COE-FS</li>
+            <li><span className="text-[#ff5500]">SWE INTERN</span> @ CTD</li>
             <li><span className="text-[#ff5500]">OS CONTRIB</span> @ LIBRECUBE</li>
-            <li><span className="text-[#ff5500]">STUDENT</span> @ THAPAR INSTITUTE</li>
           </ul>
         </div>
 
-        {/* Areas of Exploration */}
-        <div className="flex flex-col border-t border-[#ff5500]/50 pt-4 col-span-2 md:col-span-1">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-3 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
-            EXPLORATION //
+        {/* Recognition */}
+        <div className="flex flex-col border-t-[1px] border-[#ff5500]/50 pt-4 col-span-2 md:col-span-1">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+            LEADERSHIP //
           </span>
-          <ul className="space-y-2 font-sans text-xs md:text-sm font-semibold tracking-wider text-white uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
-            <li>Uncertainty-Aware AI Routing</li>
-            <li>Stateless Biometric Architectures</li>
-            <li>Real-Time WebGL &amp; Fluid Physics</li>
-            <li>High-Concurrency Backends</li>
+          <ul className="space-y-2 font-sans text-xs md:text-sm font-bold tracking-widest text-white uppercase drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
+            <li><span className="text-[#ff5500]">INNOVATOR</span> @ COE-DS&AI</li>
+            <li><span className="text-[#ff5500]">SR COORD</span> @ CTD</li>
           </ul>
         </div>
-      </section>
+
+      </div>
 
       {/* Narrative Sections */}
-      <section aria-label="Detailed Narrative" className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-24 md:gap-y-20 pointer-events-auto z-10 animate-fade-in mt-20 md:mt-32 pb-48 md:pb-32">
-        {/* Section 01 */}
-        <article className="flex flex-col border-t border-white/20 pt-6">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
-            01 // BACKGROUND &amp; INTERESTS
+      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-x-24 md:gap-y-32 pointer-events-auto z-10 animate-fade-in mt-32 md:mt-48 pb-48 md:pb-32">
+        
+        {/* Section 1 */}
+        <div className="flex flex-col border-t-[1px] border-white/20 pt-6">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+            01 // HELLO, WORLD.
           </span>
-          <div className="space-y-4 font-sans text-base md:text-lg tracking-normal text-white/90 leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
-            <p>
-              I am a Computer Engineering student at Thapar Institute of Engineering &amp; Technology, India.
-            </p>
-            <p>
-              My work focuses on the intersection of intelligent systems, systems programming, and high-craft digital products. I enjoy taking ideas that begin with foundational questions—such as how to calibrate confidence in neural networks or how to prevent attendance fraud under peak network congestion—and turning them into tested software that operates dependably under real constraints.
-            </p>
-            <p>
-              I primarily write Python, TypeScript, and C++, building across both the backend infrastructure and client-facing interfaces.
-            </p>
+          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
+            <p>I'm Lakkshya, a Computer Engineering student based in India.</p>
+            <p>I enjoy building things that begin as questions.</p>
+            <p>Sometimes those questions lead to software. Sometimes they become design experiments, research projects, event experiences, or products that solve small everyday problems. More often than not, they start with curiosity and evolve into something unexpected.</p>
+            <p>Currently, I'm pursuing my degree at Thapar Institute of Engineering & Technology, where I'm developing a strong foundation in computer science while exploring the spaces where technology intersects with design, creativity, and human behavior.</p>
+            <p>My work spans software development, AI, UI/UX design, and product thinking. I primarily work with Python, C++, JavaScript, TypeScript, React, and modern web technologies, alongside tools such as Figma, Git, Blender, and Firebase. More recently, I've been exploring machine learning, intelligent systems, and interactive web experiences.</p>
+            <p>Outside of academics and projects, I enjoy basketball, music, writing, visual design, and discovering ideas that challenge the way we think. I find inspiration in good products, thoughtful experiences, films, books, and people who aren't afraid to explore unconventional paths.</p>
+            <p>This website is a collection of my work, experiments, and the ideas I'm currently exploring.</p>
           </div>
-        </article>
+        </div>
 
-        {/* Section 02 */}
-        <article className="flex flex-col border-t border-white/20 pt-6">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
-            02 // HOW I BUILD
+        {/* Section 2 */}
+        <div className="flex flex-col border-t-[1px] border-white/20 pt-6">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+            02 // HOW I WORK
           </span>
-          <div className="space-y-4 font-sans text-base md:text-lg tracking-normal text-white/90 leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
-            <p>
-              I build from first principles. Before choosing a library or adopting a framework, I look at the constraints: data lifecycles, user latency tolerance, concurrency limits, and security trade-offs.
-            </p>
-            <p>
-              I value working with engineers and researchers who care deeply about what they are creating. In collaborative environments, clear communication, rapid iteration, and honesty about technical limitations consistently produce the most resilient systems.
-            </p>
-            <p>
-              Learning why something works is as important to me as making it work.
-            </p>
+          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
+            <p>I like working closely with people who care about what they're building.</p>
+            <p>Whether it's a technical project, a design challenge, or a community initiative, I believe the best outcomes come from open communication, curiosity, and a willingness to iterate.</p>
+            <p>I enjoy understanding the reasoning behind decisions rather than simply executing instructions. Learning how something should work is often as important as building it.</p>
+            <p>I'm comfortable exploring unfamiliar territory, asking questions, and refining ideas through experimentation.</p>
+            <p>At the end of the day, I'm less interested in titles and roles, and more interested in creating meaningful work alongside thoughtful people.</p>
           </div>
-        </article>
+        </div>
 
-        {/* Section 03 */}
-        <article className="flex flex-col border-t border-white/20 pt-6">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
-            03 // TECHNICAL FOCUS
+        {/* Section 3 */}
+        <div className="flex flex-col border-t-[1px] border-white/20 pt-6">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+            03 // WHAT I DO
           </span>
-          <div className="space-y-4 font-sans text-base md:text-lg tracking-normal text-white/90 leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
-            <p>
-              My technical work spans three key domains:
-            </p>
-            <ul className="list-disc list-outside ml-6 space-y-2">
-              <li>
-                <strong>Intelligent Systems:</strong> Designing inference pipelines that model uncertainty, prediction margin, and data quality rather than forcing black-box outputs.
-              </li>
-              <li>
-                <strong>Full-Stack Architecture:</strong> Engineering relational schemas, JWT authentication, and RESTful APIs capable of serving high-volume concurrent sessions.
-              </li>
-              <li>
-                <strong>Systems &amp; Open Source:</strong> Contributing telemetry conversion engines and developer tooling to open-source initiatives like LibreCube.
-              </li>
-            </ul>
+          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
+            <p>I build digital experiences, software products, and experimental projects. I am also an active open-source contributor, engaging with real-world codebases to solve robust engineering problems.</p>
+            <p>My interests currently revolve around artificial intelligence, software engineering, product design, and interactive web technologies. I enjoy taking ideas from concept to implementation—whether that means designing interfaces, writing code, conducting research, or refining the details that make a product feel intuitive.</p>
+            <p>I work across the stack when needed and enjoy learning new tools if they help solve the problem better.</p>
+            <p>Some technologies and tools I frequently use include: Python • C++ • JavaScript • TypeScript • React • HTML • CSS • Git • GitHub • Firebase • Figma • Blender • Linux.</p>
+            <p>More important than the tools, however, is the process of learning, experimenting, and continuously improving through building.</p>
           </div>
-        </article>
+        </div>
 
-        {/* Section 04 */}
-        <article className="flex flex-col border-t border-white/20 pt-6">
-          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-6 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
-            04 // PERSPECTIVE
+        {/* Section 4 */}
+        <div className="flex flex-col border-t-[1px] border-white/20 pt-6">
+          <span className="font-sans text-[10px] tracking-[0.4em] font-bold text-[#ff5500] uppercase mb-8 drop-shadow-[0_2px_8px_rgba(0,0,0,1)]">
+            04 // PHILOSOPHY
           </span>
-          <div className="space-y-4 font-sans text-base md:text-lg tracking-normal text-white/90 leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
-            <p>
-              I believe curiosity is an engineering discipline. Tools and frameworks will evolve constantly, but the ability to ask precise questions, decompose complex problems, and craft software with clarity and intent remains enduring.
-            </p>
-            <p>
-              Every project on this site reflects that ongoing pursuit.
-            </p>
+          <div className="space-y-6 font-sans text-lg md:text-xl tracking-wide text-white leading-relaxed font-normal drop-shadow-[0_4px_15px_rgba(0,0,0,1)]">
+            <p>I believe curiosity is a skill.</p>
+            <p>The ability to ask better questions, explore unfamiliar territory, and remain excited by the unknown has shaped nearly everything I've built and learned.</p>
+            <p>Technology changes. Tools evolve.</p>
+            <p>Curiosity remains.</p>
+            <p>Everything on this website is a result of following it.</p>
           </div>
-        </article>
-      </section>
+        </div>
+
+      </div>
+
     </main>
   );
 }

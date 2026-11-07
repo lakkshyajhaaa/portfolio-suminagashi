@@ -10,13 +10,13 @@ import { useHandTracking } from "@/lib/HandTrackingContext";
 
 const navItems = [
   { label: "HOME", route: "home", href: "/" },
-  { label: "ABOUT", route: "about", href: "/about" },
   { label: "WORK", route: "work", href: "/work" },
+  { label: "ABOUT", route: "about", href: "/about" },
   { label: "CONTACT", route: "contact", href: "/contact" },
 ];
 
 export default function Navigation() {
-  const { state, navigate, send } = useTransitionMachine();
+  const { state, send, navigate } = useTransitionMachine();
   const pathname = usePathname();
   const router = useRouter();
   const { isMuted, setIsMuted } = useSoundSystem(state.value);
@@ -26,7 +26,7 @@ export default function Navigation() {
 
   useEffect(() => {
     if (state.value === "void" && state.context.targetRoute) {
-      const targetItem = navItems.find((i) => i.route === state.context.targetRoute);
+      const targetItem = navItems.find((item) => item.route === state.context.targetRoute);
       if (targetItem) {
         router.push(targetItem.href);
         setTimeout(() => {
@@ -48,7 +48,7 @@ export default function Navigation() {
   const handleNav = (e: React.MouseEvent<HTMLAnchorElement>, route: PageRoute, href: string) => {
     e.preventDefault();
     if (pathname === href) return;
-
+    
     navigate(route);
     setTimeout(() => {
       send({ type: "ANIMATION_END" });
@@ -65,15 +65,14 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Primary Navigation Spine (Vertical on Desktop, Bottom Dock on Mobile) */}
-      <nav
-        aria-label="Main Navigation"
-        className="fixed bottom-4 left-1/2 -translate-x-1/2 flex-row w-[92vw] max-w-sm justify-around bg-black/60 backdrop-blur-lg border border-white/15 px-3 py-1.5 rounded-full md:rounded-none md:bg-transparent md:backdrop-blur-none md:border-none md:p-0 md:left-8 md:top-1/2 md:-translate-y-1/2 md:-translate-x-0 md:bottom-auto md:w-auto md:gap-20 z-50 flex mix-blend-difference pointer-events-auto [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl] rotate-0 md:rotate-180"
+      {/* Brutalist Vertical Spine (Navigation on PC, Bottom Dock on Mobile) */}
+      <nav 
+        className="fixed bottom-6 left-1/2 -translate-x-1/2 flex-row w-full justify-center gap-6 md:left-10 md:top-1/2 md:-translate-y-1/2 md:-translate-x-0 md:bottom-auto md:w-auto md:gap-24 z-50 flex mix-blend-difference pointer-events-auto [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl] rotate-0 md:rotate-180"
       >
         {navItems.map((item) => {
-          const isActive = pathname === item.href || (item.href === "/work" && pathname.startsWith("/work/"));
+          const isActive = pathname === item.href;
           const isTarget = state.context.targetRoute === item.route;
-
+          
           let opacityClass = "opacity-100";
           if (isTransitioning && !isTarget && !isActive) {
             opacityClass = "opacity-0 pointer-events-none";
@@ -83,13 +82,8 @@ export default function Navigation() {
             <a
               key={item.route}
               href={item.href}
-              aria-current={isActive ? "page" : undefined}
               onClick={(e) => handleNav(e, item.route as PageRoute, item.href)}
-              className={`min-h-[44px] min-w-[44px] inline-flex items-center justify-center font-sans text-xs md:text-[13px] tracking-[0.25em] md:tracking-[0.3em] font-black uppercase transition-all duration-500 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff6600] ${opacityClass} ${
-                isActive
-                  ? "text-white underline underline-offset-[8px] decoration-white font-black drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"
-                  : "text-[#ff6600] hover:text-white drop-shadow-[0_0_1px_rgba(255,255,255,0.9)] drop-shadow-[0_0_8px_rgba(255,102,0,0.6)] drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]"
-              }`}
+              className={`font-sans text-[10px] md:text-xs tracking-[0.4em] font-bold uppercase transition-all duration-700 ${opacityClass} ${isActive ? "text-white underline underline-offset-[8px] decoration-white/50 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" : "text-[#ff5500] hover:text-white drop-shadow-[0_0_5px_rgba(255,85,0,0.5)]"}`}
             >
               {item.label}
             </a>
@@ -97,7 +91,7 @@ export default function Navigation() {
         })}
       </nav>
 
-      {/* Desktop Brutalist Controls HUD - High Contrast & Crystal Clear Visibility */}
+      {/* Desktop Brutalist Controls HUD - High Contrast & Crystal Clear Visibility (Gesture Box) */}
       <aside
         aria-label="Experience Controls"
         className={`hidden md:flex fixed ${
@@ -208,32 +202,19 @@ export default function Navigation() {
         </button>
       </div>
 
-      {/* Top Left Logo Mark (LJ Monogram with home link) */}
-      <div className="fixed top-6 left-6 md:top-8 md:left-10 z-50 mix-blend-difference pointer-events-auto">
-        <Link
-          href="/"
-          aria-label="Lakkshya Jha Homepage"
-          className="group block p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff5500] rounded"
-        >
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="white"
-            xmlns="http://www.w3.org/2000/svg"
-            className="opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)] drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
-          >
-            {/* L */}
-            <path d="M2 2 H6 V14 H14 V18 H2 Z" />
-            {/* J */}
-            <path d="M22 22 H18 V10 H10 V6 H22 Z" />
-          </svg>
-        </Link>
+      {/* Top Left Logo Mark (LJ Monogram) */}
+      <div className="absolute md:fixed top-8 left-6 md:left-10 z-50 mix-blend-difference pointer-events-none">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" className="opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]">
+          {/* L */}
+          <path d="M2 2 H6 V14 H14 V18 H2 Z" />
+          {/* J */}
+          <path d="M22 22 H18 V10 H10 V6 H22 Z" />
+        </svg>
       </div>
 
-      {/* Bottom Copyright Brand Badge */}
-      <div className="fixed bottom-20 right-6 md:bottom-8 md:right-16 z-40 mix-blend-difference pointer-events-none font-sans text-[8px] md:text-[10px] tracking-widest text-white/50 text-right uppercase drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]">
-        © LAKKSHYA JHA
+      {/* Copyright */}
+      <div className="absolute md:fixed top-8 right-6 md:bottom-8 md:right-16 md:top-auto md:left-auto z-50 mix-blend-difference pointer-events-none font-sans text-[8px] md:text-[10px] tracking-widest text-white/30 text-right">
+        ©LAKKSHYA<br className="md:hidden"/> JHA
       </div>
     </>
   );

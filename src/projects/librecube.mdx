@@ -1,106 +1,15 @@
 ---
-id: "05"
+id: "06"
 slug: "librecube"
 name: "LIBRECUBE"
-subtitle: "Open-Source Space Mission Telemetry XTCE-to-Yamcs Conversion Engine"
-type: "OPEN SOURCE UTILITY"
-category: "Open Source / Telemetry / Python"
+type: "OPEN SOURCE"
 status: "MERGED"
 role: "Open Source Contributor"
-timeline: "2024"
-teamSize: "LibreCube Open Source Community"
-techStack: ["Python", "Yamcs", "XML", "Docker", "ElementTree"]
-liveUrl: ""
-githubUrl: "https://github.com/lakkshyajhaaa"
-description: "Open-source Python utility parsing XTCE XML spacecraft telemetry schemas and exporting Yamcs-compliant mission database spreadsheets, validated via Dockerized mission control APIs."
+techStack: ["Python", "Yamcs", "XML", "Docker"]
 ---
 
-## Overview
+Contributed to LibreCube by developing a Python utility to modernize their mission control telemetry workflows. 
 
-LibreCube is an international open-source initiative developing standardized hardware and software architectures for space exploration, CubeSats, and satellite ground stations. Mission operations in modern space infrastructure frequently leverage **Yamcs**—a battle-tested open-source mission control and telemetry processing system.
+Developed `convert_xtce.py`, a script that parses traditional `xtce.xml` schemas using `ElementTree` and dynamically exports them into a Yamcs-compliant legacy `.xls` format (Excel 97-2003) utilizing the `xlwt` library. The script autonomously traverses the XML DOM and separates telemetry data into organized sheets (Parameters, Commands, Arguments, Containers) while also generating the mandatory General sheet containing system configurations.
 
-However, a major workflow gap existed: spacecraft telemetry schemas are officially documented using the standard **XTCE XML** (XML Telemetric & Command Exchange) schema, whereas Yamcs mission control setups rely on structured multi-sheet spreadsheets (Excel 97-2003 `.xls`). Manually translating hundreds of telemetry parameters into spreadsheets was tedious, error-prone, and prevented automated CI/CD mission database validation.
-
----
-
-## 01. The Problem
-
-1. **Manual Ingestion Friction:** Aerospace engineers had to hand-craft spreadsheets for every telemetry and command definition, risking flight-critical data transposition errors.
-2. **Schema Incompatibility:** XTCE XML utilizes complex hierarchical schemas with nested parameter types, calibration polynomials, and container inheritance that do not natively map to flat spreadsheet cells.
-3. **Automated Testing Blockers:** Without programmatic conversion, satellite ground software pipelines could not automatically rebuild their mission databases upon telemetry updates.
-
-### Who Experiences This Problem?
-Aerospace engineers, ground station operators, and satellite developers configuring Yamcs mission control systems for CubeSat missions.
-
----
-
-## 02. My Contribution
-
-As an independent open-source contributor to LibreCube, I engineered and contributed the end-to-end conversion utility:
-
-- **Authored `convert_xtce.py`:** Developed a robust Python utility utilizing `xml.etree.ElementTree` to parse XTCE XML documents, recursively resolving namespaces, parameter declarations, units, bit lengths, and command arguments.
-- **Dynamic Spreadsheet Generation:** Implemented multi-sheet Excel generation using `xlwt`, structuring distinct sheets for `Parameters`, `Commands`, `Arguments`, `Containers`, and the mandatory `General` configuration sheet required by Yamcs.
-- **Dockerized Verification Suite:** Built a local validation environment using Docker to mount the generated `.xls` spreadsheet directly into an active Yamcs mission control server instance.
-- **API Health & Ingestion Check:** Executed automated HTTP REST queries against the Yamcs server API to ensure all telemetry items parsed into the Mission Database without validation warnings.
-- **Upstream Merge:** Packaged clean documentation, test fixtures, and submitted a Merge Request that was reviewed, approved, and merged into the upstream repository.
-
----
-
-## 03. System Architecture & Pipeline
-
-```text
-[Input: xtce.xml Schema]
-   │
-   ▼
-[Python Parser: convert_xtce.py]
-   │ - xml.etree.ElementTree DOM traversal
-   │ - Namespace normalization (XTCE 1.1 / 1.2)
-   │ - Extracts Parameters, Commands, Arguments, Containers
-   ▼
-[Data Transformer & Sheet Formatter]
-   │ - Maps data types to Yamcs-compliant types (uint, float, string)
-   │ - Calculates bit lengths, offsets, calibration polynomials
-   ▼
-[xlwt Workbook Builder]
-   │ Writes binary Excel (.xls) file with formatted headers
-   ▼
-[Yamcs Mission Database Spreadsheet]
-   │
-   ▼ (Mounted into Local Docker Container)
-[Yamcs Mission Control Server]
-   │
-   ▼ Automated Validation Query
-[Yamcs REST API /api/mdb] ──► 100% Ingestion Verified (0 Errors)
-```
-
----
-
-## 04. Engineering Challenges & Trade-offs
-
-### Challenge 1: XTCE Namespace and Inheritance Resolution
-- **Constraint:** XTCE specifications allow nested container inheritance (where packet headers inherit base packet definitions) and dynamic namespace declarations across different satellite manufacturers.
-- **Alternative Considered:** Regex-based string parsing. This proved too brittle and failed on well-formed but differently indented XML documents.
-- **Selected Approach:** Built an AST-like recursive crawler with `xml.etree.ElementTree` that dynamically strips XML namespaces and traverses container inheritance trees to accurately compute packet byte offsets.
-
-### Challenge 2: Adherence to Legacy Binary `.xls` Format
-- **Constraint:** Modern Python tools default to `.xlsx` (OpenXML), but the Yamcs engine's spreadsheet parser strictly required the legacy binary Excel 97-2003 `.xls` format.
-- **Resolution:** Integrated the `xlwt` library, managing cell styling, data types, and multi-sheet generation strictly within the legacy binary format constraints to guarantee compatibility with Yamcs internal loaders.
-
----
-
-## 05. Validation & Results
-
-- **Complete Telemetry Ingestion:** Validated using reference CubeSat telemetry schemas:
-  - **35 Parameters** parsed with correct data types, units, and ranges.
-  - **3 Telemetry Containers** mapped with accurate packet structure and offsets.
-  - **3 Spacecraft Commands & Arguments** correctly populated in the command dictionary.
-- **Server Verification:** Yamcs server booted in Docker successfully parsed the generated `.xls` file with **zero validation errors or warnings**.
-- **Community Impact:** The Merge Request was officially accepted and merged into the LibreCube repository, establishing an automated telemetry conversion pathway for future mission operators.
-
----
-
-## 06. Future Improvements
-
-- **XTCE 1.2 Extended Types:** Expand parser to handle polynomial calibration curves, alarm thresholds, and stream decoders.
-- **Direct Yamcs MDB YAML Export:** Add an export target for modern Yamcs YAML database configurations alongside legacy `.xls`.
-- **CLI Packaging:** Publish the utility to PyPI as a standalone CLI tool (`pip install xtce2yamcs`) for space developers.
+To ensure production readiness, the generated spreadsheet was validated by mounting it into a local Yamcs Docker container, booting the server, and querying the Yamcs HTTP API. This confirmed that all 35 parameters, 3 containers, and 3 commands from the original XTCE were flawlessly loaded into the Mission Database without validation errors. The Merge Request was successfully tested and merged into the prototype repository.

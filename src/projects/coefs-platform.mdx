@@ -1,99 +1,19 @@
 ---
-id: "03"
+id: "04"
 slug: "coefs-platform"
 name: "COE-FS PLATFORM"
-subtitle: "Research Analytics Portal for Centre of Excellence in Food Safety"
-type: "RESEARCH PORTAL"
-category: "Frontend / DevOps / Systems"
+type: "FRONTEND & DEVOPS"
 status: "ACTIVE"
 role: "Software Engineering Intern"
-timeline: "2024"
-teamSize: "Engineering Intern, Research Team"
-techStack: ["React", "TypeScript", "Docker", "Nginx", "RESTful APIs"]
-liveUrl: ""
-githubUrl: "https://github.com/lakkshyajhaaa"
-description: "Centralized academic research platform with asynchronous data pipelines, containerized deployment, and responsive analytics serving 100+ active university researchers."
+techStack: ["React", "Docker", "Nginx", "RESTful APIs"]
 ---
 
-## Overview
+Partnered with research stakeholders to scope and ship a frontend for a research platform serving 100+ active users at Thapar University.
 
-The Centre of Excellence in Food Safety (COE-FS) conducts critical academic research involving extensive laboratory datasets, sensor logs, and sample testing histories. Historically, data management across departments relied on disparate spreadsheets and manual data exports, complicating cross-lab collaboration and decelerating scientific publication workflows.
+## Deployment & Usability
 
-As a Software Engineering Intern, I collaborated directly with research stakeholders to architect and deliver a unified frontend research portal and containerized deployment infrastructure tailored for academic workflows.
+The core challenge was balancing rapid feature delivery with robust asynchronous data handling for academic research requirements.
 
----
-
-## 01. The Problem
-
-Research teams within academic labs face unique data challenges:
-
-1. **Large Asynchronous Payloads:** Chemical and biological sample logs generate extensive tabular data that overwhelm unoptimized client interfaces, leading to browser freezing.
-2. **Ambiguous Scientific Requirements:** Unlike commercial software with established user flows, researchers often have evolving investigative requirements that need rapid frontend iteration.
-3. **Deployment Fragility:** Lab servers frequently lack modern continuous integration workflows, requiring self-contained, reproducible container configurations that run reliably without complex server dependencies.
-
-### Who Experiences This Problem?
-100+ active university faculty researchers, PhD scholars, and student investigators analyzing food safety sample data across laboratory cohorts.
-
----
-
-## 02. My Contribution
-
-During my internship with COE-FS, I was responsible for:
-
-- **Requirements Scoping:** Conducted iterative feedback sessions with laboratory scientists to translate scientific data requirements into prioritized UI workflows.
-- **Frontend Architecture:** Built the Single Page Application using React and TypeScript, incorporating reusable data tables, dynamic filtering facets, and export utilities.
-- **Asynchronous Data Handling:** Engineered resilient API integration patterns using structured loading states, client-side pagination, and debounced search to maintain UI responsiveness during heavy queries.
-- **Containerization & Deployment:** Configured production multi-stage Docker builds and tuned Nginx reverse-proxy caching, gzip compression, and static asset delivery.
-
-### Third-Party Libraries & Tools
-- **Frontend Core:** React, TypeScript, React Router.
-- **Styling & Components:** TailwindCSS and modern UI primitives.
-- **Infrastructure:** Docker, Docker Compose, Nginx.
-- **Backend Communication:** Axios / Fetch APIs interfacing with lab-provided RESTful services.
-
----
-
-## 03. System Architecture
-
-```text
-[Browser Client: React SPA]
-   │
-   ▼ HTTPS Requests (Port 443 / 80)
-[Nginx Reverse Proxy & Static File Server]
-   ├── Serving pre-built static bundle with Gzip & Cache-Control
-   │
-   ▼ Proxied API Requests (/api/*)
-[Backend RESTful Microservices]
-   │ Query Execution
-   ▼
-[Research Database & Laboratory Storage]
-```
-
----
-
-## 04. Engineering Challenges & Trade-offs
-
-### Challenge 1: Large Sample Datasets Degrading UI Responsiveness
-- **Constraint:** Querying longitudinal sample records returned thousands of nested rows. Rendering these directly into standard HTML tables caused severe DOM layout thrashing and dropped frames.
-- **Alternative Considered:** Requiring the backend to implement full server-side cursor pagination. However, backend changes were constrained by academic research timelines.
-- **Selected Approach:** Implemented virtualized list rendering and client-side windowing alongside debounced input filters. By rendering only visible DOM elements within the viewport, scroll performance remained silky smooth at 60fps regardless of dataset magnitude.
-
-### Challenge 2: Self-Contained Laboratory Server Deployment
-- **Constraint:** The deployment target was an on-premise university server with varied dependency versions and strict firewall rules.
-- **Resolution:** Authored an optimized multi-stage Dockerfile that builds the React application in a lightweight Node environment and copies production static assets into a minimal alpine-based Nginx container. This reduced image size by over 80% and guaranteed zero dependency conflicts on the host machine.
-
----
-
-## 05. Validation & Results
-
-- **Active Deployment:** Successfully deployed and in production use across the Centre of Excellence, serving **100+ active faculty, researchers, and students**.
-- **Bundle Optimization:** Multi-stage Docker builds reduced production image footprint to `< 25MB`.
-- **Stakeholder Satisfaction:** Streamlined data retrieval workflows, reducing researchers' daily sample lookup times from multiple manual files into single-query dashboards.
-
----
-
-## 06. Future Improvements
-
-- **Server-Side Rendering (SSR):** Migrate core routes to Next.js App Router for faster initial time-to-first-byte (TTFB) and improved search indexing.
-- **Role-Based Audit Logging:** Introduce immutable audit logs tracking who downloaded or modified sensitive experimental sample records.
-- **Automated Laboratory Data Ingestion:** Webhook-based integration allowing automated laboratory sensor instruments to pipe logs directly into the ingestion queue.
+- **User-Centric Iteration:** Translated raw user feedback from research stakeholders into prioritized feature additions and critical usability improvements.
+- **API Integration:** Integrated heavily with backend RESTful APIs, implementing robust asynchronous data handling patterns to ensure UI responsiveness during large data fetches.
+- **Infrastructure & Deployment:** Collaborated cross-functionally on production deployment, utilizing Docker and Nginx while balancing complex engineering trade-offs against tight release timelines.
